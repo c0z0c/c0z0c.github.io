@@ -61,27 +61,17 @@
         
         .eyeball {
             position: absolute;
-            width: 60%;
-            height: 60%;
+            width: 40%;
+            height: 40%;
             background: #ff4444;
             border-radius: 50%;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-60%, -50%);
             transition: all 0.1s ease;
             box-shadow: 
                 0 0 10px #ff4444,
                 inset 0 0 10px rgba(0,0,0,0.5);
-        }
-        
-        /* 왼쪽 눈동자 위치 보정 */
-        #leftEye {
-            transform: translate(-45%, -50%); /* 왼쪽으로 5% 더 이동 */
-        }
-        
-        /* 오른쪽 눈동자는 기본 중앙 위치 유지 */
-        #rightEye {
-            transform: translate(-50%, -50%);
         }
         
         .highlight {
@@ -96,6 +86,60 @@
             pointer-events: none;
             transform: translate(0, 0);
             transition: all 0.1s ease;
+        }
+        
+        /* 매트릭스 머리카락 효과 - 영화 스타일 스트림 */
+        .matrix-hair {
+            position: absolute;
+            top: -100%;
+            left: 20%;
+            width: 54%;
+            height: 120%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .hair-stream {
+            position: absolute;
+            color: #00ff41;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.5rem;
+            line-height: 0.6;
+            opacity: 0.8;
+            animation: streamFall linear infinite;
+            text-shadow: 0 0 8px #00ff41;
+            white-space: pre-line;
+            width: 0.8rem;
+            text-align: center;
+        }
+        
+        .hair-stream.bright {
+            color: #ffffff;
+            text-shadow: 0 0 15px #00ff41;
+            opacity: 1;
+        }
+        
+        .hair-stream.special {
+            color: #00ffff;
+            text-shadow: 0 0 12px #00ffff;
+        }
+        
+        @keyframes streamFall {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
         }
         
         .subtitle {
@@ -192,6 +236,63 @@
             box-shadow: 0 0 10px rgba(0,255,65,0.3);
         }
         
+        /* 디버깅용 가이드 라인 */
+        .debug-line-vertical,
+        .debug-line-horizontal,
+        .debug-line-connection {
+            position: fixed;
+            background: yellow;
+            pointer-events: none;
+            z-index: 999;
+            opacity: 0.8;
+            display: none;
+        }
+        
+        .debug-line-vertical {
+            width: 2px;
+            height: 100vh;
+            top: 0;
+        }
+        
+        .debug-line-horizontal {
+            height: 2px;
+            width: 100vw;
+            left: 0;
+        }
+        
+        .debug-line-connection {
+            height: 2px;
+            transform-origin: left center;
+            background: yellow;
+        }
+        
+        body.debug-mode .debug-line-vertical,
+        body.debug-mode .debug-line-horizontal,
+        body.debug-mode .debug-line-connection {
+            display: block;
+        }
+        
+        .debug-toggle {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(7, 7, 7, 0.2);
+            border: 1px solid #171817;
+            color: #240000;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .debug-toggle:hover {
+            background: rgba(0, 255, 65, 0.3);
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+        }
+        
         @media (max-width: 768px) {
             .nav-links {
                 top: 1rem;
@@ -204,45 +305,104 @@
                 font-size: 0.8rem;
                 padding: 0.4rem 0.8rem;
             }
+            
+            .debug-toggle {
+                top: 0.5rem;
+                left: 0.5rem;
+                font-size: 0.7rem;
+                padding: 0.4rem 0.8rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="terminal-cursor"></div>
+    <button class="debug-toggle" onclick="toggleDebug()">DEBUG OFF</button>
     
+    <!-- 디버깅용 가이드 라인 -->
+    <div class="debug-line-vertical" id="debugVertical"></div>
+    <div class="debug-line-horizontal" id="debugHorizontal"></div>
+    <div class="debug-line-connection" id="debugLineLeft"></div>
+    <div class="debug-line-connection" id="debugLineRight"></div>
+    
+    <div class="terminal-cursor"></div>
     <div class="matrix-bg" id="matrixBg"></div>
     
     <nav class="nav-links">
-        <a href="#projects" class="nav-link">projects</a>
+        <a href="https://c0z0c.github.io/test_web/" class="nav-link">projects</a>
         <a href="#blog" class="nav-link">blog</a>
         <a href="#contact" class="nav-link">contact</a>
     </nav>
     
     <div class="face-container">
+        <!-- 매트릭스 머리카락 컨테이너 -->
+        <div class="matrix-hair" id="matrixHair"></div>
+        
         <div class="face">
             c<span class="eye">0<div class="eyeball" id="leftEye"><div class="highlight" id="leftHighlight"></div></div></span>z<span class="eye">0<div class="eyeball" id="rightEye"><div class="highlight" id="rightHighlight"></div></div></span>c
         </div>
     </div>
     
     <div class="subtitle">
-        <div class="code-line">const developer = {</div>
-        <div class="code-line">&nbsp;&nbsp;name: "c0z0c",</div>
-        <div class="code-line">&nbsp;&nbsp;passion: "coding"</div>
-        <div class="code-line">};</div>
+<!--        
+        <div class="code-line">σ = √(Σ(xi - μ)² / N)</div>
+        <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;R² = 1 - SSres/SStot</div>
+        <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;σ(x) = 1 / (1 + e<sup>-x</sup>)</div>
+        <div class="code-line">&nbsp;&nbsp;SE = σ / √n</div>
+ -->
+        <div class="code-line">import helper_c0z0c_dev as helper</div>
+        <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;helper.setup()</div>
+        <div class="code-line">&nbsp;한글</div>
+        <div class="code-line">&nbsp;&nbsp;by c0z0c</div>
+
     </div>
 
     <script>
+        // ===== 디버그 모드 토글 =====
+        let debugMode = false;
+        const debugToggleBtn = document.querySelector('.debug-toggle');
+        const debugVertical = document.getElementById('debugVertical');
+        const debugHorizontal = document.getElementById('debugHorizontal');
+        const debugLineLeft = document.getElementById('debugLineLeft');
+        const debugLineRight = document.getElementById('debugLineRight');
+        
+        function toggleDebug() {
+            debugMode = !debugMode;
+            document.body.classList.toggle('debug-mode', debugMode);
+            debugToggleBtn.textContent = debugMode ? 'DEBUG ON' : 'DEBUG OFF';
+        }
+        
+        function drawConnectionLine(highlight, debugLine, mouseX, mouseY) {
+            if (!debugMode) return;
+            
+            const highlightRect = highlight.getBoundingClientRect();
+            const highlightCenterX = highlightRect.left + highlightRect.width / 2;
+            const highlightCenterY = highlightRect.top + highlightRect.height / 2;
+            
+            const deltaX = mouseX - highlightCenterX;
+            const deltaY = mouseY - highlightCenterY;
+            const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+            const angle = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
+            
+            debugLine.style.left = highlightCenterX + 'px';
+            debugLine.style.top = highlightCenterY + 'px';
+            debugLine.style.width = distance + 'px';
+            debugLine.style.transform = `rotate(${angle}deg)`;
+        }
+        
         // ===== 마우스 커서 효과 =====
         const cursor = document.querySelector('.terminal-cursor');
         let mouseX = 0, mouseY = 0;
         
-        // 마우스 움직임 추적
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
+            
+            if (debugMode) {
+                debugVertical.style.left = mouseX + 'px';
+                debugHorizontal.style.top = mouseY + 'px';
+            }
         });
         
-        // 커서 애니메이션 루프 (부드러운 움직임)
         function updateCursor() {
             cursor.style.left = mouseX - 10 + 'px';
             cursor.style.top = mouseY - 10 + 'px';
@@ -262,116 +422,170 @@
                 { eyeball: rightEye, highlight: rightHighlight, isLeft: false }
             ];
             
-            eyes.forEach(eye => {
-                // 각 눈의 중심 좌표 계산
+            eyes.forEach((eye, index) => {
                 const eyeRect = eye.eyeball.parentElement.getBoundingClientRect();
                 const eyeCenterX = eyeRect.left + eyeRect.width / 2;
                 const eyeCenterY = eyeRect.top + eyeRect.height / 2;
                 
-                // 마우스와 눈 중심 사이의 거리 계산
                 let deltaX = e.clientX - eyeCenterX;
                 let deltaY = e.clientY - eyeCenterY;
                 
-                // 왼쪽 눈 특별 보정 (마우스를 더 잘 따라가도록)
+                // 눈이 'z' 중앙을 바라보도록 보정
                 if (eye.isLeft) {
-                    deltaX = deltaX * 1.3; // 좌우 움직임 증가 (값을 줄이면 덜 움직임)
-                    deltaY = deltaY * 1.1; // 상하 움직임 증가 (값을 줄이면 덜 움직임)
+                    deltaX = deltaX + 20;
+                } else {
+                    deltaX = deltaX - 20;
                 }
                 
-                // 마우스 방향 각도 계산
-                const angle = Math.atan2(deltaY, deltaX);
+                deltaX = deltaX * 1.2;
+                deltaY = deltaY * 1.4;
                 
-                // 거리 계산 및 최대 움직임 제한
+                const angle = Math.atan2(deltaY, deltaX);
                 const rawDistance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-                const maxDistance = 12; // 최대 움직임 거리 (픽셀) - 크게 하면 더 많이 움직임
-                const sensitivity = 0.08; // 민감도 - 크게 하면 더 민감하게 반응
+                const maxDistance = 12;
+                const sensitivity = 0.08;
                 const distance = Math.min(maxDistance, rawDistance * sensitivity);
                 
-                // 실제 움직일 X, Y 좌표 계산
                 const moveX = Math.cos(angle) * distance;
                 const moveY = Math.sin(angle) * distance;
                 
-                // 눈동자(빨간 원) 이동 적용 - 기본 위치 고려
-                let baseTransform;
-                if (eye.isLeft) {
-                    // 왼쪽 눈의 기본 위치 보정 포함 (더 왼쪽으로)
-                    baseTransform = `translate(calc(-45% + ${moveX}px), calc(-50% + ${moveY}px))`;
-                } else {
-                    // 오른쪽 눈의 기본 중앙 위치
-                    baseTransform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px))`;
-                }
+                const baseTransform = `translate(calc(-60% + ${moveX}px), calc(-50% + ${moveY}px))`;
                 eye.eyeball.style.transform = baseTransform;
                 
-                // 하이라이트(흰 점) 이동 - 눈동자보다 약간 더 빠르게 반응
-                const highlightMultiplierX = 1.15; // X축 반응 배수 (1.0 = 눈동자와 같음)
-                const highlightMultiplierY = 1.1;  // Y축 반응 배수
-                const highlightMoveX = moveX * highlightMultiplierX;
-                const highlightMoveY = moveY * highlightMultiplierY;
+                let highlightMoveX = moveX * 1.0;
+                let highlightMoveY = moveY * 1.0;
+                
+                if (eye.isLeft) {
+                    highlightMoveX += 2;
+                } else {
+                    highlightMoveX -= 2;
+                }
+                
                 eye.highlight.style.transform = `translate(${highlightMoveX}px, ${highlightMoveY}px)`;
+                
+                if (debugMode) {
+                    if (index === 0) {
+                        drawConnectionLine(eye.highlight, debugLineLeft, e.clientX, e.clientY);
+                    } else {
+                        drawConnectionLine(eye.highlight, debugLineRight, e.clientX, e.clientY);
+                    }
+                }
             });
         }
         
-        // 마우스 움직임에 눈동자 반응 연결
         document.addEventListener('mousemove', moveEyes);
         
-        // ===== 매트릭스 배경 효과 =====
+        // ===== 매트릭스 머리카락 효과 - 김춘수 꽃 시 =====
+        function createMatrixHair() {
+            const matrixHair = document.getElementById('matrixHair');
+            // 김춘수의 「꽃」 시 전문
+            const poemText = '내가그의이름을불러주기전에는그는다만하나의몸짓에지나지않았다내가그의이름을불러주었을때그는나에게로와서꽃이되었다우리들은모두무엇이되고싶다너는나에게로나는너에게로가고싶다하나의의미가되고싶다';
+            const chars = poemText.split('');
+            
+            function createHairStream() {
+                const stream = document.createElement('div');
+                stream.className = 'hair-stream';
+                
+                // 스트림 타입 결정
+                const streamType = Math.random();
+                if (streamType < 0.1) {
+                    stream.classList.add('bright'); // 10% 밝은 스트림
+                } else if (streamType < 0.15) {
+                    stream.classList.add('special'); // 5% 특별한 색상
+                }
+                
+                // 시의 문자들로 세로 스트림 생성 (15-25개 문자)
+                const streamLength = Math.floor(Math.random() * 10) + 15;
+                let streamText = '';
+                for (let i = 0; i < streamLength; i++) {
+                    streamText += chars[Math.floor(Math.random() * chars.length)] + '\n';
+                }
+                stream.textContent = streamText;
+                
+                // 위치 및 속도 설정
+                stream.style.left = Math.random() * 100 + '%';
+                stream.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                stream.style.animationDelay = Math.random() * 2 + 's';
+                
+                matrixHair.appendChild(stream);
+                
+                // 애니메이션 완료 후 제거
+                setTimeout(() => {
+                    if (stream.parentNode) {
+                        stream.remove();
+                    }
+                }, 15000);
+            }
+            
+            // 스트림 생성 (더 많이, 더 빈번하게)
+            setInterval(createHairStream, 300);
+            
+            // 더 많은 스트림 동시 생성
+            setInterval(() => {
+                for (let i = 0; i < 4; i++) {
+                    setTimeout(createHairStream, i * 100);
+                }
+            }, 1500);
+            
+            // 추가 버스트 효과
+            setInterval(() => {
+                for (let i = 0; i < 6; i++) {
+                    setTimeout(createHairStream, i * 50);
+                }
+            }, 4000);
+        }
+        
+        // ===== 배경 매트릭스 효과 - 김춘수 꽃 시 =====
         function createMatrixRain() {
             const matrixBg = document.getElementById('matrixBg');
-            // 사용할 문자들 (0, 1과 일본어 문자)
-            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+            // 김춘수의 「꽃」 시 전문 + 숫자
+            const poemText = '01내가그의이름을불러주기전에는그는다만하나의몸짓에지나지않았다내가그의이름을불러주었을때그는나에게로와서꽃이되었다우리들은모두무엇이되고싶다너는나에게로나는너에게로가고싶다하나의의미가되고싶다';
+            const chars = poemText.split('');
             
             function createChar() {
                 const char = document.createElement('div');
                 char.className = 'matrix-char';
                 char.textContent = chars[Math.floor(Math.random() * chars.length)];
-                char.style.left = Math.random() * 100 + '%'; // 랜덤 가로 위치
-                char.style.animationDuration = (Math.random() * 3 + 2) + 's'; // 2-5초 랜덤 속도
-                char.style.fontSize = (Math.random() * 0.5 + 0.5) + 'rem'; // 랜덤 크기
+                char.style.left = Math.random() * 100 + '%';
+                char.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                char.style.fontSize = (Math.random() * 0.5 + 0.5) + 'rem';
                 
                 matrixBg.appendChild(char);
                 
-                // 5초 후 문자 제거 (메모리 절약)
                 setTimeout(() => {
-                    char.remove();
+                    if (char.parentNode) {
+                        char.remove();
+                    }
                 }, 5000);
             }
             
-            // 200ms마다 새 문자 생성 (빈도 조정 가능)
             setInterval(createChar, 200);
         }
         
+        // 효과들 시작
+        createMatrixHair();
         createMatrixRain();
         
         // ===== 눈 깜빡이는 효과 =====
         setInterval(() => {
-            const eyes = [
-                { eyeball: leftEye, isLeft: true },
-                { eyeball: rightEye, isLeft: false }
-            ];
+            const eyes = [leftEye, rightEye];
             eyes.forEach(eye => {
-                // 현재 transform 값 저장 (기본 위치 고려)
-                let currentTransform;
-                if (eye.isLeft) {
-                    currentTransform = eye.eyeball.style.transform || 'translate(-48%, -50%)';
-                } else {
-                    currentTransform = eye.eyeball.style.transform || 'translate(-50%, -50%)';
-                }
-                // Y축 스케일을 0.1로 만들어 깜빡임 효과
-                eye.eyeball.style.transform = currentTransform + ' scaleY(0.1)';
+                const currentTransform = eye.style.transform || 'translate(-60%, -50%)';
+                eye.style.transform = currentTransform + ' scaleY(0.1)';
                 setTimeout(() => {
-                    // 150ms 후 원래대로 복원
-                    eye.eyeball.style.transform = currentTransform;
+                    eye.style.transform = currentTransform;
                 }, 150);
             });
-        }, 3000 + Math.random() * 2000); // 3-5초 랜덤 간격으로 깜빡임
+        }, 1000 + Math.random() * 2000);
         
         // ===== 네비게이션 링크 클릭 효과 =====
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', (e) => {
-                e.preventDefault();
-                console.log(`Navigating to ${link.textContent}...`);
-                // 여기에 실제 네비게이션 로직을 추가할 수 있습니다
-                // 예: window.location.href = link.getAttribute('href');
+                // 내부 앵커(#)만 막고, 외부/절대경로는 기본 동작 허용
+                if (link.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    console.log(`Navigating to ${link.textContent}...`);
+                }
             });
         });
     </script>
