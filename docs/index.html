@@ -248,6 +248,79 @@
             box-shadow: 0 0 10px rgba(0,255,65,0.3);
         }
         
+        /* 프로젝트 드롭다운 스타일 */
+        .nav-item {
+            position: relative;
+            align-self: flex-start;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            border: 1px solid #00ff41;
+            border-radius: 4px;
+            min-width: 250px;
+            padding: 1rem;
+            display: none;
+            z-index: 200;
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                0 4px 20px rgba(0, 255, 65, 0.2),
+                0 0 40px rgba(0, 255, 65, 0.1);
+        }
+        
+        .dropdown-menu.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .dropdown-title {
+            color: #00ff41;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #333;
+            padding-bottom: 0.5rem;
+        }
+        
+        .project-item {
+            display: block;
+            color: #888;
+            text-decoration: none;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #222;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+        }
+        
+        .project-item:last-child {
+            border-bottom: none;
+        }
+        
+        .project-item:hover {
+            color: #00ff41;
+            padding-left: 0.5rem;
+            background: rgba(0, 255, 65, 0.1);
+        }
+        
+        .project-description {
+            font-size: 0.7rem;
+            color: #555;
+            margin-top: 0.2rem;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         /* 디버깅용 가이드 라인 */
         .debug-line-vertical,
         .debug-line-horizontal,
@@ -340,13 +413,38 @@
     <div class="matrix-bg" id="matrixBg"></div>
     
     <nav class="nav-links">
-        <a href="https://c0z0c.github.io/jupyter_hangul/" class="nav-link">Projects</a>
-        <a href="https://c0z0c.github.io/sprint_mission" class="nav-link">Learning notes</a>
-        <a href="https://c0z0c.github.io/blog" class="nav-link">Blog</a>
-        <!--
-        
-        <a href="#contact" class="nav-link">contact</a>
-        -->
+        <div class="nav-item">
+            <a href="#" class="nav-link" onclick="toggleProjectMenu(event)">Projects</a>
+            <div class="dropdown-menu" id="projectMenu">
+                <div class="dropdown-title">📂 프로젝트 목록</div>
+                <a href="https://c0z0c.github.io/jupyter_hangul/" class="project-item">
+                    Jupyter 한글 지원
+                    <div class="project-description">Jupyter 기반 한글 텍스트</div>
+                </a>
+                <a href="https://c0z0c.github.io/codeit_ai_health_eat/" class="project-item">
+                    [초급포로젝트] AI 경구 알약 분류
+                    <div class="project-description">AI 경구 알약 분류</div>
+                </a>
+            <!--
+                <a href="#" class="project-item">
+                    매트릭스 포트폴리오
+                    <div class="project-description">인터랙티브 개발자 포트폴리오</div>
+                </a>
+                <a href="#" class="project-item">
+                    코딩 학습 노트
+                    <div class="project-description">개발 학습 과정 문서화</div>
+                </a>
+            -->
+            </div>
+            
+            <a href="https://c0z0c.github.io/sprint_mission" class="nav-link">Learning notes</a>
+            <a href="https://c0z0c.github.io/blog" class="nav-link">Blog</a>
+            <!--
+            https://c0z0c.github.io/codeit_ai_health_eat/
+            <a href="#contact" class="nav-link">contact</a>
+            -->
+
+        </div>
     </nav>
     
     <div class="face-container">
@@ -597,6 +695,31 @@
                     console.log(`Navigating to ${link.textContent}...`);
                 }
             });
+        });
+        
+        // ===== 프로젝트 드롭다운 메뉴 =====
+        function toggleProjectMenu(event) {
+            event.preventDefault();
+            const menu = document.getElementById('projectMenu');
+            menu.classList.toggle('show');
+        }
+        
+        // 메뉴 외부 클릭시 닫기
+        document.addEventListener('click', (event) => {
+            const projectMenu = document.getElementById('projectMenu');
+            const projectsLink = event.target.closest('.nav-item');
+            
+            if (!projectsLink && projectMenu.classList.contains('show')) {
+                projectMenu.classList.remove('show');
+            }
+        });
+        
+        // ESC 키로 메뉴 닫기
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                const projectMenu = document.getElementById('projectMenu');
+                projectMenu.classList.remove('show');
+            }
         });
     </script>
 </body>
