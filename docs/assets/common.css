@@ -1,0 +1,405 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap');
+
+:root {
+    --bg-1: #0a0a0a;
+    --bg-2: #1a1a2e;
+    --bg-3: #16213e;
+    --accent-green: #00ff41;
+    --accent-red: #ff4444;
+    --accent-purple: #b503fc;
+    --accent-cyan: #00ffff;
+    --text-dim: #888;
+    --text-dimmer: #555;
+    --border-dim: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'JetBrains Mono', monospace;
+    background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-3) 100%);
+    color: var(--accent-green);
+    min-height: 100vh;
+    cursor: none;
+}
+
+a {
+    color: inherit;
+}
+
+/* ===== 커스텀 커서 ===== */
+.terminal-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: var(--accent-green);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1000;
+    transition: transform 0.1s ease;
+    box-shadow: 0 0 20px var(--accent-green);
+}
+
+/* ===== 배경 매트릭스 효과 ===== */
+.matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.matrix-char {
+    position: absolute;
+    color: var(--accent-green);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    animation: matrixFall linear infinite;
+}
+
+@keyframes matrixFall {
+    0% {
+        transform: translateY(-100vh);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+/* ===== 네비게이션 ===== */
+.nav-links {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 100;
+}
+
+.nav-item {
+    position: relative;
+    align-self: flex-start;
+}
+
+.nav-link {
+    color: var(--accent-purple);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-dim);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    display: inline-block;
+    background: rgba(10, 10, 10, 0.4);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--accent-green);
+    border-color: var(--accent-green);
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(10, 10, 10, 0.95);
+    border: 1px solid var(--accent-green);
+    border-radius: 4px;
+    min-width: 250px;
+    padding: 1rem;
+    display: none;
+    z-index: 200;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow:
+        0 4px 20px rgba(0, 255, 65, 0.2),
+        0 0 40px rgba(0, 255, 65, 0.1);
+}
+
+.dropdown-menu.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.dropdown-title {
+    color: var(--accent-green);
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border-dim);
+    padding-bottom: 0.5rem;
+}
+
+.project-item {
+    display: block;
+    color: var(--text-dim);
+    text-decoration: none;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #222;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.project-item:last-child {
+    border-bottom: none;
+}
+
+.project-item:hover {
+    color: var(--accent-green);
+    padding-left: 0.5rem;
+    background: rgba(0, 255, 65, 0.1);
+}
+
+.project-description {
+    font-size: 0.7rem;
+    color: var(--text-dimmer);
+    margin-top: 0.2rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== 디버깅용 가이드 라인 ===== */
+.debug-line-vertical,
+.debug-line-horizontal,
+.debug-line-connection {
+    position: fixed;
+    background: yellow;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.8;
+    display: none;
+}
+
+.debug-line-vertical {
+    width: 2px;
+    height: 100vh;
+    top: 0;
+}
+
+.debug-line-horizontal {
+    height: 2px;
+    width: 100vw;
+    left: 0;
+}
+
+.debug-line-connection {
+    height: 2px;
+    transform-origin: left center;
+    background: yellow;
+}
+
+body.debug-mode .debug-line-vertical,
+body.debug-mode .debug-line-horizontal,
+body.debug-mode .debug-line-connection {
+    display: block;
+}
+
+.debug-toggle {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(7, 7, 7, 0.2);
+    border: 1px solid #171817;
+    color: #240000;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.debug-toggle:hover {
+    background: rgba(0, 255, 65, 0.3);
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
+
+@media (max-width: 768px) {
+    .debug-toggle {
+        top: 0.5rem;
+        left: 0.5rem;
+        font-size: 0.7rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* ===== 모바일: 햄버거 토글 메뉴 ===== */
+.nav-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 300;
+    width: 2.6rem;
+    height: 2.6rem;
+    background: rgba(10, 10, 10, 0.7);
+    border: 1px solid var(--accent-green);
+    color: var(--accent-green);
+    font-size: 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        top: 0;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: rgba(6, 6, 10, 0.97);
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
+        padding: 4.6rem 1.2rem 1.5rem;
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-link {
+        display: block;
+        text-align: center;
+        font-size: 0.9rem;
+        padding: 0.7rem 0.8rem;
+    }
+
+    .dropdown-menu {
+        position: static;
+        width: 100%;
+        min-width: 0;
+        margin-top: 0.4rem;
+    }
+}
+
+@media (hover: none) {
+    body {
+        cursor: auto;
+    }
+
+    .terminal-cursor {
+        display: none;
+    }
+}
+
+/* ===== 프로젝트 카드 (portfolio.js가 렌더링) ===== */
+.proj-card {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+    text-decoration: none;
+    background: rgba(10, 10, 10, 0.5);
+    border: 1px solid var(--border-dim);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.25s ease;
+}
+
+.proj-card:hover {
+    border-color: var(--accent-green);
+    box-shadow: 0 0 16px rgba(0, 255, 65, 0.25);
+    transform: translateY(-2px);
+}
+
+.proj-thumb {
+    position: relative;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.proj-thumb video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.proj-emoji {
+    font-size: 2.5rem;
+}
+
+.proj-video-badge {
+    position: absolute;
+    bottom: 0.4rem;
+    right: 0.5rem;
+    background: rgba(0, 0, 0, 0.6);
+    color: var(--accent-cyan);
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+}
+
+.proj-body {
+    padding: 0.8rem 0.9rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.proj-title {
+    font-size: 0.8rem;
+    color: var(--accent-green);
+    line-height: 1.3;
+}
+
+.proj-desc {
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.proj-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-top: auto;
+}
+
+.proj-tag {
+    font-size: 0.6rem;
+    color: var(--accent-purple);
+    border: 1px solid var(--border-dim);
+    border-radius: 3px;
+    padding: 0.1rem 0.4rem;
+}

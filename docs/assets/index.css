@@ -1,0 +1,346 @@
+/* index.html 전용 스타일 (3분할 레이아웃: 히어로 / 경력 / 포트폴리오) */
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.page-grid {
+    display: grid;
+    /* minmax(0, ...)가 없으면 fr 트랙이 자식(포트폴리오 카드 등)의
+       콘텐츠 최대 폭까지 늘어나며 좁은 화면에서 레이아웃이 깨진다 */
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+        "hero career"
+        "portfolio portfolio";
+    min-height: 100vh;
+}
+
+/* ===== 좌상단: 히어로 영역 ===== */
+.hero-panel {
+    grid-area: hero;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 2rem 1rem;
+}
+
+.face-container {
+    position: relative;
+    font-size: clamp(3rem, 9vw, 7rem);
+    font-weight: 700;
+    text-shadow:
+        0 0 10px #00ff41,
+        0 0 20px #00ff41,
+        0 0 40px #00ff41;
+    user-select: none;
+    letter-spacing: 0.1em;
+}
+
+.face {
+    position: relative;
+}
+
+.eye {
+    position: relative;
+    display: inline-block;
+}
+
+.eyeball {
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    background: #ff4444;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-60%, -50%);
+    transition: all 0.1s ease;
+    box-shadow:
+        0 0 10px #ff4444,
+        inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.highlight {
+    position: absolute;
+    width: 30%;
+    height: 30%;
+    background: #ffffff;
+    border-radius: 50%;
+    top: 40%;
+    left: 30%;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    pointer-events: none;
+    transform: translate(0, 0);
+    transition: all 0.1s ease;
+}
+
+.matrix-hair {
+    position: absolute;
+    top: -100%;
+    left: 20%;
+    width: 54%;
+    height: 120%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hair-stream {
+    position: absolute;
+    color: #00ff41;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.5rem;
+    line-height: 0.6;
+    opacity: 0.8;
+    animation: streamFall linear infinite;
+    text-shadow: 0 0 8px #00ff41;
+    white-space: pre-line;
+    width: 0.8rem;
+    text-align: center;
+}
+
+.hair-stream.bright {
+    color: #ffffff;
+    text-shadow: 0 0 15px #00ff41;
+    opacity: 1;
+}
+
+.hair-stream.special {
+    color: #00ffff;
+    text-shadow: 0 0 12px #00ffff;
+}
+
+@keyframes streamFall {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+.subtitle {
+    margin-top: 1.2rem;
+    font-size: clamp(0.75rem, 1.8vw, 1rem);
+    color: #888;
+    text-align: center;
+    opacity: 0;
+    animation: fadeInUp 2s ease 1s forwards;
+}
+
+.code-line {
+    opacity: 0;
+    animation: typewriter 1s ease forwards;
+}
+
+.code-line:nth-child(1) {
+    animation-delay: 2s;
+}
+
+.code-line:nth-child(2) {
+    animation-delay: 2.5s;
+}
+
+.code-line:nth-child(3) {
+    animation-delay: 3s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes typewriter {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ===== 우상단: 경력 패널 (더미 데이터) ===== */
+.career-panel {
+    grid-area: career;
+    padding: 3rem 2.5rem;
+    border-left: 1px solid var(--border-dim);
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    justify-content: center;
+}
+
+.career-panel h2 {
+    font-size: 1.1rem;
+    color: var(--accent-green);
+    letter-spacing: 0.05em;
+}
+
+.career-panel .lead {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.timeline-item {
+    border-left: 2px solid var(--accent-green);
+    padding-left: 0.9rem;
+}
+
+.timeline-period {
+    font-size: 0.65rem;
+    color: var(--accent-purple);
+}
+
+.timeline-role {
+    font-size: 0.8rem;
+    color: #ddd;
+    margin-top: 0.15rem;
+}
+
+.timeline-desc {
+    font-size: 0.68rem;
+    color: var(--text-dimmer);
+    margin-top: 0.15rem;
+    line-height: 1.5;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.skill-tag {
+    font-size: 0.65rem;
+    color: var(--accent-cyan);
+    border: 1px solid var(--border-dim);
+    border-radius: 3px;
+    padding: 0.15rem 0.5rem;
+}
+
+.career-more {
+    font-size: 0.7rem;
+    color: var(--accent-purple);
+    text-decoration: none;
+    align-self: flex-start;
+    border-bottom: 1px dashed var(--accent-purple);
+}
+
+/* ===== 하단: 포트폴리오 스크롤 스트립 ===== */
+.portfolio-section {
+    grid-area: portfolio;
+    border-top: 1px solid var(--border-dim);
+    padding: 1.2rem 1.5rem 1.5rem;
+}
+
+.portfolio-section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.8rem;
+}
+
+.portfolio-section-head h2 {
+    font-size: 0.85rem;
+    color: var(--accent-green);
+    letter-spacing: 0.05em;
+}
+
+.portfolio-section-head a {
+    font-size: 0.65rem;
+    color: var(--accent-purple);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--accent-purple);
+}
+
+.portfolio-section {
+    /* grid 트랙이 카드 전체 폭만큼 늘어나지 않도록 명시적으로 차단 */
+    min-width: 0;
+}
+
+#portfolioStrip {
+    display: flex;
+    gap: 1.2rem;
+    min-width: 0;
+    overflow-x: auto;
+    /* JS에서 requestAnimationFrame으로 직접 easing을 주므로 브라우저 기본 smooth는 끔 */
+    scroll-behavior: auto;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+}
+
+#portfolioStrip::-webkit-scrollbar {
+    height: 6px;
+}
+
+#portfolioStrip::-webkit-scrollbar-thumb {
+    background: var(--border-dim);
+    border-radius: 3px;
+}
+
+/* 카드 폭 2배 확대 (기존 260px -> 520px) */
+#portfolioStrip .proj-card {
+    width: 520px;
+}
+
+#portfolioStrip .proj-thumb {
+    height: 220px;
+}
+
+#portfolioStrip .proj-emoji {
+    font-size: 3.5rem;
+}
+
+@media (max-width: 900px) {
+    .page-grid {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto auto auto;
+        grid-template-areas:
+            "hero"
+            "career"
+            "portfolio";
+    }
+
+    .career-panel {
+        border-left: none;
+        border-top: 1px solid var(--border-dim);
+        padding: 2rem 1.5rem;
+    }
+
+    .hero-panel {
+        min-height: 60vh;
+    }
+}

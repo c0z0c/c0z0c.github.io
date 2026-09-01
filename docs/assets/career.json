@@ -1,0 +1,63 @@
+{
+  "lead": "AI/백엔드 중심 개발자. 문서 자동화(HWP/MD/PDF)와 검색·RAG 파이프라인을 주로 다룹니다. 반복 업무를 pip 패키지로 만들어 공유하는 걸 좋아합니다. (샘플/더미 데이터)",
+  "timeline": [
+    {
+      "section": "experience",
+      "period": "2024.03 - 현재",
+      "role": "AI Developer",
+      "org": "(주)더미컴퍼니",
+      "summary": "RAG 기반 사내 문서 검색 시스템 개발, 문서 변환 파이프라인 구축",
+      "bullets": [
+        "HWP/PDF/Markdown 소스를 대상으로 한 사내 RAG 기반 문서 검색 시스템 구축",
+        "문서 변환 파이프라인 설계 (HWP → PDF/MD/Text, MD → DOC)",
+        "사내 도구를 pip 패키지로 배포해 팀 전체가 재사용할 수 있도록 함"
+      ],
+      "featured": true
+    },
+    {
+      "section": "experience",
+      "period": "2023.01 - 2024.02",
+      "role": "Backend Developer",
+      "org": "예시테크",
+      "summary": "API 서버 및 데이터 파이프라인 개발, 사내 도구 자동화",
+      "bullets": [
+        "사내 분석 플랫폼을 위한 REST API 및 데이터 파이프라인 개발",
+        "반복적인 리포팅 작업을 자동화해 수작업을 약 40% 절감 (샘플 수치)"
+      ],
+      "featured": true
+    },
+    {
+      "section": "education",
+      "period": "2022",
+      "role": "Codeit AI 부트캠프 수료",
+      "org": "",
+      "summary": "AI/ML 실무 프로젝트 다수 수행 (분류, 검색, 생성형 AI)",
+      "bullets": [
+        "이미지 분류, 문서 검색, 생성형 AI 팀 프로젝트 다수 수행"
+      ],
+      "featured": true
+    },
+    {
+      "section": "openSource",
+      "period": "진행 중",
+      "role": "pip: helper-dev-utils, helper-plot-hangul, helper-md-doc, helper-hwp",
+      "org": "",
+      "summary": "한글 플로팅, HWP/Markdown 문서 변환용 유틸리티 패키지 배포",
+      "bullets": [
+        "한글 플로팅 및 HWP/Markdown 문서 변환용 유틸리티 패키지"
+      ],
+      "featured": false
+    }
+  ],
+  "skills": [
+    "Python",
+    "JavaScript",
+    "FastAPI",
+    "PyTorch",
+    "LangChain",
+    "RAG / Vector Search",
+    "SQL",
+    "Docker",
+    "Git"
+  ]
+}

@@ -1,0 +1,80 @@
+[
+  {
+    "id": "rag-pdf-search",
+    "title": "[LLM] PDF 문서 검색 도구 (RAG)",
+    "description": "AI 기반 PDF 문서 검색 도구 - 임베딩 검색 + LLM 응답 생성",
+    "tags": [
+      "RAG",
+      "LLM",
+      "Python"
+    ],
+    "thumbGradient": "linear-gradient(135deg, #00ff41, #16213e)",
+    "thumbEmoji": "📄",
+    "link": "https://github.com/c0z0c/pdf_search_openai",
+    "media": {
+      "type": "none"
+    }
+  },
+  {
+    "id": "ad-content-gen",
+    "title": "[고급프로젝트] 광고 생성",
+    "description": "생성형 AI를 활용한 광고 콘텐츠 자동 생성 프로젝트",
+    "tags": [
+      "Generative AI",
+      "Team Project"
+    ],
+    "thumbGradient": "linear-gradient(135deg, #b503fc, #16213e)",
+    "thumbEmoji": "🎯",
+    "link": "https://krapnuyij.github.io/codeit-ai-3team-ad-content",
+    "media": {
+      "type": "video",
+      "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+      "poster": ""
+    }
+  },
+  {
+    "id": "g2b-rfp-search",
+    "title": "[중급프로젝트] RFP 문서 검색",
+    "description": "나라장터 RFP 문서를 대상으로 한 검색/분석 서비스",
+    "tags": [
+      "Search",
+      "NLP"
+    ],
+    "thumbGradient": "linear-gradient(135deg, #00ffff, #16213e)",
+    "thumbEmoji": "🔍",
+    "link": "https://c0z0c.github.io/codeit_ai_g2b_search/",
+    "media": {
+      "type": "none"
+    }
+  },
+  {
+    "id": "pill-classifier",
+    "title": "[초급프로젝트] AI 경구 알약 분류",
+    "description": "이미지 분류 모델을 활용한 경구 알약 자동 분류",
+    "tags": [
+      "Computer Vision",
+      "Classification"
+    ],
+    "thumbGradient": "linear-gradient(135deg, #ff4444, #16213e)",
+    "thumbEmoji": "💊",
+    "link": "https://c0z0c.github.io/codeit_ai_health_eat/",
+    "media": {
+      "type": "none"
+    }
+  },
+  {
+    "id": "sprint-mission",
+    "title": "[미션] AI 미션 모음",
+    "description": "학습 과정에서 진행한 AI 미션 모음집",
+    "tags": [
+      "Mission",
+      "AI"
+    ],
+    "thumbGradient": "linear-gradient(135deg, #888, #16213e)",
+    "thumbEmoji": "🧩",
+    "link": "https://c0z0c.github.io/sprint_mission",
+    "media": {
+      "type": "none"
+    }
+  }
+]

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI c0z0c</title>
+    <link rel="stylesheet" href="assets/common.css">
+    <style>
+        .page-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 1.5rem 4rem;
+        }
+
+        .page-title {
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            color: var(--accent-green);
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.4);
+            margin-bottom: 0.4rem;
+        }
+
+        .page-sub {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-bottom: 2.5rem;
+        }
+
+        .chat-window {
+            border: 1px solid var(--border-dim);
+            border-radius: 8px;
+            background: rgba(10, 10, 10, 0.5);
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .bubble {
+            max-width: 80%;
+            padding: 0.6rem 0.9rem;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            line-height: 1.6;
+        }
+
+        .bubble.user {
+            align-self: flex-end;
+            background: rgba(181, 3, 252, 0.12);
+            border: 1px solid rgba(181, 3, 252, 0.4);
+            color: #ddd;
+        }
+
+        .bubble.bot {
+            align-self: flex-start;
+            background: rgba(0, 255, 65, 0.08);
+            border: 1px solid rgba(0, 255, 65, 0.35);
+            color: #cdefd8;
+        }
+
+        .chat-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.6rem;
+        }
+
+        .chat-toolbar .storage-note {
+            font-size: 0.65rem;
+            color: var(--text-dimmer);
+        }
+
+        .chat-clear-btn {
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            background: none;
+            border: 1px solid var(--border-dim);
+            border-radius: 4px;
+            padding: 0.25rem 0.6rem;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .chat-clear-btn:hover {
+            color: var(--accent-red);
+            border-color: var(--accent-red);
+        }
+
+        .chat-form {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 1rem;
+        }
+
+        .chat-input {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-dim);
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            color: #eee;
+            font-family: inherit;
+            font-size: 0.78rem;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+
+        .chat-send-btn {
+            background: rgba(0, 255, 65, 0.1);
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            border-radius: 6px;
+            padding: 0.6rem 1.1rem;
+            font-family: inherit;
+            font-size: 0.78rem;
+            cursor: pointer;
+        }
+
+        .chat-send-btn:hover {
+            background: rgba(0, 255, 65, 0.2);
+        }
+
+        .chat-send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin-top: 2.5rem;
+        }
+
+        .info-card {
+            border: 1px solid var(--border-dim);
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: rgba(10, 10, 10, 0.4);
+        }
+
+        .info-card h3 {
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card p {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="debug-toggle" onclick="toggleDebug()">DEBUG OFF</button>
+    <div class="debug-line-vertical" id="debugVertical"></div>
+    <div class="debug-line-horizontal" id="debugHorizontal"></div>
+    <div class="terminal-cursor"></div>
+    <div class="matrix-bg" id="matrixBg"></div>
+
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="메뉴">☰</button>
+    <nav class="nav-links">
+        <div class="nav-item"><a href="index.html" class="nav-link">Home</a></div>
+        <div class="nav-item"><a href="AIc0z0c.html" class="nav-link active">AI c0z0c</a></div>
+        <div class="nav-item"><a href="career.html" class="nav-link">경력</a></div>
+        <div class="nav-item"><a href="portfolio.html" class="nav-link">포트폴리오</a></div>
+        <div class="nav-item"><a href="https://c0z0c.github.io/blog" class="nav-link">Blog</a></div>
+    </nav>
+
+    <div class="page-wrap">
+        <h1 class="page-title">AI c0z0c</h1>
+        <p class="page-sub">c0z0c의 프로젝트/블로그 내용을 기반으로 답하는 AI 페르소나 (더미 데모 — 실제 응답 연동 전)</p>
+
+        <div class="chat-toolbar">
+            <span class="storage-note">💾 대화 내용은 이 브라우저의 local storage에만 저장됩니다 (서버 전송 없음)</span>
+            <button class="chat-clear-btn" id="chatClearBtn" type="button">대화 초기화</button>
+        </div>
+
+        <div class="chat-window" id="chatWindow"></div>
+
+        <form class="chat-form" id="chatForm">
+            <input type="text" class="chat-input" id="chatInput" placeholder="c0z0c에게 물어보세요... (예: helper-hwp는 뭐하는 패키지예요?)" autocomplete="off" maxlength="500">
+            <button type="submit" class="chat-send-btn" id="chatSendBtn">전송</button>
+        </form>
+
+        <div class="cards">
+            <div class="info-card">
+                <h3>기반 데이터</h3>
+                <p>포트폴리오 프로젝트, 블로그 글, pip 패키지 문서 (예정)</p>
+            </div>
+            <div class="info-card">
+                <h3>현재 상태</h3>
+                <p>입력/히스토리 저장(local storage)까지 구현 — 실제 LLM 응답 연동은 추후 진행 예정</p>
+            </div>
+            <div class="info-card">
+                <h3>목표</h3>
+                <p>방문자가 c0z0c의 이력/프로젝트를 대화형으로 탐색할 수 있게 하는 것</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/common.js"></script>
+    <script src="assets/aichat.js"></script>
+</body>
+
+</html>
