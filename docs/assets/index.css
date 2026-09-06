@@ -324,6 +324,16 @@ body {
     font-size: 3.5rem;
 }
 
+@media (min-width: 901px) {
+    .page-grid {
+        grid-template-columns: 640px minmax(0, 1fr);
+    }
+
+    .face-container {
+        font-size: 4.5rem;
+    }
+}
+
 @media (max-width: 900px) {
     .page-grid {
         grid-template-columns: minmax(0, 1fr);
