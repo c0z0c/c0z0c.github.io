@@ -1,0 +1,18 @@
+{
+  "identity": "(더미) 저는 백엔드/AI 파이프라인을 주로 다루는 개발자입니다. 실제 이력/경력 문구는 추후 채워집니다.",
+  "skills": ["Python", "FastAPI", "AWS Lambda", "LangGraph"],
+  "projects": [
+    {
+      "name": "(더미) 예시 프로젝트",
+      "summary": "실제 프로젝트 요약이 들어갈 자리입니다.",
+      "duration_weeks": 4,
+      "stack": ["Python", "FastAPI"]
+    }
+  ],
+  "capability_tone_guideline": "(더미) 직접 경험/인접 역량/학습 필요를 구분하는 실제 판단 기준 서술이 들어갈 자리입니다.",
+  "effort_reference": "(더미) 과거 프로젝트 규모 대비 기간을 근거로 추정치를 산출하는 실제 기준이 들어갈 자리입니다.",
+  "contact": {
+    "email": "dummy@example.com"
+  },
+  "future_plan_template": "(더미) 계획 없음/준비 가능/예상 기간/연락처 4단 답변 템플릿이 들어갈 자리입니다."
+}
