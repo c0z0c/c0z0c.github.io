@@ -1,4 +1,5 @@
 // index.html 전용 스크립트: 눈동자 추적 + 매트릭스 머리카락 + 눈 깜빡임
+// career.html과 portfolio.html에는 적용하지 않는다.
 // (얼굴 로고 관련 DOM(#leftEye 등)이 index.html에만 있으므로 이 페이지에서만 로드한다)
 
 document.addEventListener('DOMContentLoaded', () => {

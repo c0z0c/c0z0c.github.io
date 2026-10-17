@@ -6,6 +6,7 @@
 // 프로젝트 추가 방법: docs/projects/manifest.json 에 항목 하나 추가하면 끝.
 
 (function () {
+    // manifest.json의 프로젝트 한 건을 카드 DOM으로 변환한다.
     function buildCard(p) {
         const card = document.createElement('a');
         card.className = 'proj-card';
@@ -134,6 +135,7 @@
         return res.json();
     }
 
+    // index.html은 #portfolioStrip, portfolio.html은 #portfolioGrid를 사용한다.
     async function initPortfolio() {
         const strip = document.getElementById('portfolioStrip');
         const grid = document.getElementById('portfolioGrid');

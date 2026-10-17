@@ -1,4 +1,5 @@
 // ===== AIc0z0c 백엔드(POST /chat) 호출부 =====
+// 화면 로직과 백엔드 API의 경계를 분리하는 모듈이다.
 // 이 파일이 LLM 백엔드와 닿는 유일한 지점이다. 나머지(UI, 히스토리 저장, 오류 처리)는 aichat.js.
 //
 // API 계약 (AIc0z0c/src/app/routers/chat.py)

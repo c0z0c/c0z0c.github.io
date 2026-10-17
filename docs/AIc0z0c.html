@@ -7,41 +7,45 @@
     <title>AI c0z0c</title>
     <link rel="stylesheet" href="assets/common.css">
     <style>
+        /* AI c0z0c 화면 전체 영역 */
         .page-wrap {
             max-width: 900px;
             margin: 0 auto;
-            padding: 4.5rem 1.5rem 3rem;
+            padding: 3rem 1.5rem 1.5rem;
         }
 
+        /* AI c0z0c 페이지 제목과 부제목 */
         .page-title {
             font-size: clamp(1.4rem, 4vw, 2rem);
             color: var(--accent-green);
             text-shadow: 0 0 10px rgba(0, 255, 65, 0.4);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.15rem;
         }
 
         .page-sub {
-            font-size: 0.8rem;
+            font-size: 1.15rem;
             color: var(--text-dim);
-            margin-bottom: 1.8rem;
+            margin-bottom: 0.8rem;
         }
 
+        /* 사용자 입력과 AI 응답을 표시하는 대화 본문 */
         .chat-window {
             border: 1px solid var(--border-dim);
             border-radius: 8px;
             background: rgba(10, 10, 10, 0.5);
-            padding: 1.2rem;
+            padding: 0.75rem 1rem;
             display: flex;
             flex-direction: column;
-            gap: 0.9rem;
+            gap: 0.55rem;
         }
 
+        /* 대화 본문 내부의 사용자/AI/오류 메시지 */
         .bubble {
             max-width: 80%;
-            padding: 0.6rem 0.9rem;
+            padding: 0.45rem 0.85rem;
             border-radius: 8px;
-            font-size: 0.78rem;
-            line-height: 1.6;
+            font-size: 1.1rem;
+            line-height: 1.45;
         }
 
         .bubble.user {
@@ -65,21 +69,22 @@
             color: #ffb3b3;
         }
 
+        /* 추천 질문, 입력창, 저장 상태, 초기화 버튼 등 대화 조작 UI */
         .chat-suggestions {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
+            gap: 0.45rem;
+            margin-top: 0.6rem;
         }
 
         .chip {
             font-family: inherit;
-            font-size: 0.68rem;
+            font-size: 0.95rem;
             color: var(--accent-cyan);
             background: none;
             border: 1px solid var(--border-dim);
             border-radius: 999px;
-            padding: 0.3rem 0.8rem;
+            padding: 0.25rem 0.75rem;
             cursor: pointer;
         }
 
@@ -92,21 +97,21 @@
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.35rem;
         }
 
         .chat-toolbar .storage-note {
-            font-size: 0.65rem;
+            font-size: 0.9rem;
             color: var(--text-dimmer);
         }
 
         .chat-clear-btn {
-            font-size: 0.65rem;
+            font-size: 0.9rem;
             color: var(--text-dim);
             background: none;
             border: 1px solid var(--border-dim);
             border-radius: 4px;
-            padding: 0.25rem 0.6rem;
+            padding: 0.2rem 0.55rem;
             cursor: pointer;
             font-family: inherit;
         }
@@ -119,7 +124,7 @@
         .chat-form {
             display: flex;
             gap: 0.6rem;
-            margin-top: 1rem;
+            margin-top: 0.6rem;
         }
 
         .chat-input {
@@ -127,10 +132,10 @@
             background: rgba(0, 0, 0, 0.4);
             border: 1px solid var(--border-dim);
             border-radius: 6px;
-            padding: 0.6rem 0.8rem;
+            padding: 0.5rem 0.8rem;
             color: #eee;
             font-family: inherit;
-            font-size: 0.78rem;
+            font-size: 1.1rem;
         }
 
         .chat-input:focus {
@@ -143,9 +148,9 @@
             border: 1px solid var(--accent-green);
             color: var(--accent-green);
             border-radius: 6px;
-            padding: 0.6rem 1.1rem;
+            padding: 0.5rem 1.1rem;
             font-family: inherit;
-            font-size: 0.78rem;
+            font-size: 1.05rem;
             cursor: pointer;
         }
 
@@ -162,7 +167,7 @@
         @media (min-width: 1500px) {
             .page-wrap {
                 max-width: 1600px;
-                padding: 5rem 1.5rem 3rem;
+                padding: 2.2rem 1.5rem 1.2rem;
                 display: grid;
                 grid-template-columns: minmax(0, 1fr) 22rem;
                 column-gap: 2rem;
@@ -191,7 +196,7 @@
             }
 
             .chat-window {
-                min-height: 24vh;
+                min-height: 18vh;
             }
         }
 
@@ -210,9 +215,9 @@
         }
 
         .info-card h3 {
-            font-size: 0.8rem;
+            font-size: 1.15rem;
             color: var(--accent-cyan);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         .info-card a {
@@ -220,9 +225,9 @@
         }
 
         .info-card p {
-            font-size: 0.7rem;
+            font-size: 0.95rem;
             color: var(--text-dim);
-            line-height: 1.6;
+            line-height: 1.5;
         }
     </style>
     <meta name="description" content="22년 임베디드·시스템 엔지니어링 위에 LLM·RAG·에이전트·n8n 자동화를 더하는 AI/SW 엔지니어 김명환(c0z0c)의 포트폴리오">
@@ -242,6 +247,7 @@
     <div class="matrix-bg" id="matrixBg"></div>
 
     <button class="nav-toggle" onclick="toggleNav()" aria-label="메뉴">☰</button>
+    <!-- 공통 내비게이션 -->
     <nav class="nav-links">
         <div class="nav-item"><a href="index.html" class="nav-link">Home</a></div>
         <div class="nav-item"><a href="AIc0z0c.html" class="nav-link active">AI c0z0c</a></div>
@@ -250,6 +256,7 @@
         <div class="nav-item"><a href="https://c0z0c.github.io/blog" class="nav-link">Blog</a></div>
     </nav>
 
+    <!-- AIc0z0c 본문: 채팅 UI와 추천 질문을 배치한다. -->
     <div class="page-wrap">
         <h1 class="page-title">AI c0z0c</h1>
         <p class="page-sub">c0z0c의 이력을 근거로 답하는 AI 페르소나입니다. <span id="chatModeNote"></span></p>
@@ -259,12 +266,14 @@
             <button class="chat-clear-btn" id="chatClearBtn" type="button">대화 초기화</button>
         </div>
 
+        <!-- 대화 표시 영역: aichat.js가 사용자·AI 메시지를 추가한다. -->
         <div class="chat-window" id="chatWindow"></div>
 
         <form class="chat-form" id="chatForm">
             <input type="text" class="chat-input" id="chatInput" placeholder="c0z0c에게 물어보세요... (예: helper-hwp는 뭐하는 패키지예요?)" autocomplete="off" maxlength="2000">
             <button type="submit" class="chat-send-btn" id="chatSendBtn">전송</button>
         </form>
+        <!-- 추천 질문 영역: aichat.js가 질문 chip을 생성한다. -->
         <div class="chat-suggestions" id="chatSuggestions"></div>
 
         <div class="cards">
@@ -283,6 +292,7 @@
         </div>
     </div>
 
+    <!-- common.js는 공통 UI, aichat-api.js는 API 경계, aichat.js는 채팅 상태를 담당한다. -->
     <script src="assets/common.js"></script>
     <script src="assets/aichat-api.js"></script>
     <script src="assets/aichat.js"></script>

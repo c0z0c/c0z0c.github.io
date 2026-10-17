@@ -12,6 +12,7 @@
     };
     const SECTION_ORDER = ['experience', 'education', 'patent', 'freeware', 'openSource'];
 
+    // career.json은 화면 출력용 약력 데이터다. AI 참고용 detail.json은 백엔드가 읽는다.
     async function loadCareer() {
         const res = await fetch('assets/career.json', { cache: 'no-store' });
         if (!res.ok) throw new Error('career.json load failed: ' + res.status);
@@ -30,6 +31,7 @@
     }
 
     // index.html 우상단 요약 패널
+    // index.html의 약력 요약 영역(#careerLead, #careerTimeline, #careerSkills)을 렌더링한다.
     function renderTeaser(data) {
         const leadEl = document.getElementById('careerLead');
         const timelineEl = document.getElementById('careerTimeline');
@@ -65,6 +67,7 @@
     }
 
     // career.html 전체 페이지
+    // career.html의 전체 약력 본문(#careerFull)을 렌더링한다.
     function renderFull(data) {
         const leadEl = document.getElementById('careerLead');
         const root = document.getElementById('careerFull');

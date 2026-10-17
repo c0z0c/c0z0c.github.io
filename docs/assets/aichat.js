@@ -1,4 +1,5 @@
 // ===== AIc0z0c 챗 UI =====
+// AIc0z0c.html의 입력·대화 표시·localStorage 복원을 담당한다.
 // - 표시용 대화 로그와 서버가 발급한 history_jwt를 localStorage에 저장/복원 (서버는 무상태)
 // - 백엔드 호출은 window.AIc0z0cApi.sendChat (aichat-api.js) 에만 의존
 // - 추천 질문은 prompts/system_prompt.json(페르소나 데이터)의 실제 프로젝트 이름으로 만든다

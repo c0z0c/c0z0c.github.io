@@ -7,12 +7,14 @@
     <title>c0z0c - 경력</title>
     <link rel="stylesheet" href="assets/common.css">
     <style>
+        /* 약력 페이지 전체 영역 */
         .page-wrap {
             max-width: 900px;
             margin: 0 auto;
-            padding: 4.5rem 1.5rem 3rem;
+            padding: 3.8rem 1.5rem 2.5rem;
         }
 
+        /* 약력 페이지 제목과 설명 */
         .page-title {
             font-size: clamp(1.4rem, 4vw, 2rem);
             color: var(--accent-green);
@@ -21,58 +23,63 @@
         }
 
         .page-sub {
-            font-size: 0.8rem;
+            font-size: 1.15rem;
             color: var(--text-dim);
-            margin-bottom: 1.6rem;
+            margin-bottom: 1.4rem;
+            line-height: 1.5;
         }
 
+        /* 약력 본문의 경력 섹션 */
         section {
-            margin-bottom: 2rem;
+            margin-bottom: 1.8rem;
         }
 
         section h2 {
-            font-size: 0.9rem;
+            font-size: 1.15rem;
             color: var(--accent-purple-text);
             letter-spacing: 0.05em;
             border-bottom: 1px solid var(--border-dim);
-            padding-bottom: 0.4rem;
-            margin-bottom: 1rem;
+            padding-bottom: 0.35rem;
+            margin-bottom: 0.9rem;
         }
 
+        /* 약력 본문의 개별 경력 항목: 기간과 상세 내용 */
         .entry {
             display: grid;
             grid-template-columns: 160px 1fr;
             gap: 1rem;
-            margin-bottom: 1.4rem;
+            margin-bottom: 1.3rem;
         }
 
         .entry-period {
-            font-size: 0.7rem;
+            font-size: 0.95rem;
             color: var(--accent-cyan);
         }
 
+        /* 경력 상세의 직무명, 소속, 수행 내용 */
         .entry-body .entry-role {
-            font-size: 0.9rem;
+            font-size: 1.18rem;
             color: #eee;
         }
 
         .entry-body .entry-org {
-            font-size: 0.75rem;
+            font-size: 1.02rem;
             color: var(--text-dim);
             margin-top: 0.15rem;
         }
 
         .entry-body ul {
-            margin-top: 0.6rem;
+            margin-top: 0.5rem;
             padding-left: 1.1rem;
         }
 
         .entry-body li {
-            font-size: 0.75rem;
+            font-size: 1.02rem;
             color: var(--text-dim);
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
+        /* 보유 기술 목록 */
         .skills-grid {
             display: flex;
             flex-wrap: wrap;
@@ -80,11 +87,11 @@
         }
 
         .skill-pill {
-            font-size: 0.72rem;
+            font-size: 0.98rem;
             color: var(--accent-cyan);
             border: 1px solid var(--border-dim);
             border-radius: 999px;
-            padding: 0.3rem 0.8rem;
+            padding: 0.25rem 0.75rem;
         }
 
         @media (min-width: 1500px) {
@@ -117,6 +124,7 @@
     <div class="matrix-bg" id="matrixBg"></div>
 
     <button class="nav-toggle" onclick="toggleNav()" aria-label="메뉴">☰</button>
+    <!-- 공통 내비게이션 -->
     <nav class="nav-links">
         <div class="nav-item"><a href="index.html" class="nav-link">Home</a></div>
         <div class="nav-item"><a href="AIc0z0c.html" class="nav-link">AI c0z0c</a></div>
@@ -125,6 +133,7 @@
         <div class="nav-item"><a href="https://c0z0c.github.io/blog" class="nav-link">Blog</a></div>
     </nav>
 
+    <!-- 전체 약력 본문: career.js가 career.json의 timeline과 skills를 렌더링한다. -->
     <div class="page-wrap">
         <h1 class="page-title">경력 — c0z0c</h1>
         <p class="page-sub" id="careerLead">불러오는 중...</p>
@@ -132,6 +141,7 @@
         <div id="careerFull"></div>
     </div>
 
+    <!-- 공통 UI를 초기화한 뒤 career.js가 약력 데이터를 표시한다. -->
     <script src="assets/common.js"></script>
     <script src="assets/career.js"></script>
 </body>

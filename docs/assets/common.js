@@ -1,4 +1,5 @@
 // ===== 공통 리소스: 커서, 배경 매트릭스, 네비게이션, 디버그 =====
+// 모든 HTML 페이지가 공유하며, 페이지별 데이터 렌더링은 전용 JS가 담당한다.
 // index.html / AIc0z0c.html / career.html / portfolio.html 공용
 
 (function () {
@@ -82,6 +83,25 @@
             }
         });
     });
+
+    // AI c0z0c 링크에 1~5초의 무작위 간격으로 짧은 흔들림을 적용한다.
+    const aiC0z0cLink = document.querySelector('.nav-link[href="AIc0z0c.html"]');
+    if (aiC0z0cLink && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        aiC0z0cLink.classList.add('ai-c0z0c-link');
+
+        const scheduleAiC0z0cShake = () => {
+            const delay = Math.random() * 4000 + 1000;
+            window.setTimeout(() => {
+                aiC0z0cLink.classList.add('is-shaking');
+            }, delay);
+        };
+
+        aiC0z0cLink.addEventListener('animationend', () => {
+            aiC0z0cLink.classList.remove('is-shaking');
+            scheduleAiC0z0cShake();
+        });
+        scheduleAiC0z0cShake();
+    }
 
     // ===== 외부 링크는 새 탭으로 열기 =====
     // 이 사이트의 페이지(상대 경로)는 같은 탭, 절대 URL(Blog, PyPI, GitHub, 프로젝트 등)은 새 탭.

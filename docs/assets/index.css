@@ -1,4 +1,4 @@
-/* index.html 전용 스타일 (3분할 레이아웃: 히어로 / 경력 / 포트폴리오) */
+/* index.html 전용 스타일: 히어로 / 약력 요약 / 포트폴리오 요약 */
 
 body {
     display: flex;
@@ -10,14 +10,15 @@ body {
     /* minmax(0, ...)가 없으면 fr 트랙이 자식(포트폴리오 카드 등)의
        콘텐츠 최대 폭까지 늘어나며 좁은 화면에서 레이아웃이 깨진다 */
     grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-    grid-template-rows: 1fr auto;
+    grid-template-rows: minmax(0, 1fr) auto;
     grid-template-areas:
         "hero career"
         "portfolio portfolio";
-    min-height: 100vh;
+    height: 100vh;
 }
 
 /* ===== 좌상단: 히어로 영역 ===== */
+/* 얼굴 로고, 소개 문구, 기술 링크에 적용 */
 .hero-panel {
     grid-area: hero;
     position: relative;
@@ -136,8 +137,9 @@ body {
 }
 
 .subtitle {
-    margin-top: 1.2rem;
-    font-size: clamp(0.75rem, 1.8vw, 1rem);
+    margin-top: 0.8rem;
+    font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+    line-height: 1.45;
     color: var(--text-dim);
     text-align: center;
     opacity: 0;
@@ -210,33 +212,34 @@ body {
     }
 }
 
-/* ===== 우상단: 경력 패널 (더미 데이터) ===== */
+/* ===== 우상단: 경력 패널 ===== */
+/* career.json의 lead, timeline, skills가 표시되는 약력 요약 본문 */
 .career-panel {
     grid-area: career;
-    padding: 2.2rem 2rem 1.2rem;
+    padding: 3.8rem 1.8rem 0.6rem;
     border-left: 1px solid var(--border-dim);
     display: flex;
     flex-direction: column;
-    gap: 1.1rem;
-    justify-content: center;
+    gap: 0.55rem;
+    justify-content: flex-start;
 }
 
 .career-panel h2 {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: var(--accent-green);
     letter-spacing: 0.05em;
 }
 
 .career-panel .lead {
-    font-size: 0.78rem;
+    font-size: 1.15rem;
     color: var(--text-dim);
-    line-height: 1.6;
+    line-height: 1.45;
 }
 
 .timeline {
     display: flex;
     flex-direction: column;
-    gap: 0.9rem;
+    gap: 0.45rem;
 }
 
 .timeline-item {
@@ -245,21 +248,21 @@ body {
 }
 
 .timeline-period {
-    font-size: 0.65rem;
+    font-size: 0.95rem;
     color: var(--accent-purple-text);
 }
 
 .timeline-role {
-    font-size: 0.8rem;
+    font-size: 1.18rem;
     color: #ddd;
-    margin-top: 0.15rem;
+    margin-top: 0.1rem;
 }
 
 .timeline-desc {
-    font-size: 0.68rem;
+    font-size: 1.02rem;
     color: var(--text-dimmer);
-    margin-top: 0.15rem;
-    line-height: 1.5;
+    margin-top: 0.1rem;
+    line-height: 1.4;
 }
 
 .skill-tags {
@@ -269,15 +272,15 @@ body {
 }
 
 .skill-tag {
-    font-size: 0.65rem;
+    font-size: 0.95rem;
     color: var(--accent-cyan);
     border: 1px solid var(--border-dim);
     border-radius: 3px;
-    padding: 0.15rem 0.5rem;
+    padding: 0.15rem 0.45rem;
 }
 
 .career-more {
-    font-size: 0.7rem;
+    font-size: 1.02rem;
     color: var(--accent-purple-text);
     text-decoration: none;
     align-self: flex-start;
@@ -285,27 +288,28 @@ body {
 }
 
 /* ===== 하단: 포트폴리오 스크롤 스트립 ===== */
+/* manifest.json 카드가 #portfolioStrip에 가로로 표시되는 영역 */
 .portfolio-section {
     grid-area: portfolio;
     border-top: 1px solid var(--border-dim);
-    padding: 1rem 1.5rem 1.2rem;
+    padding: 0.5rem 1.5rem 0.8rem;
 }
 
 .portfolio-section-head {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.35rem;
 }
 
 .portfolio-section-head h2 {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--accent-green);
     letter-spacing: 0.05em;
 }
 
 .portfolio-section-head a {
-    font-size: 0.65rem;
+    font-size: 0.95rem;
     color: var(--accent-purple-text);
     text-decoration: none;
     border-bottom: 1px dashed var(--accent-purple);
@@ -338,11 +342,11 @@ body {
 
 /* 포트폴리오 카드 크기 (첫 화면 1줄 안정적 표시) */
 #portfolioStrip .proj-card {
-    width: 440px;
+    width: 480px;
 }
 
 #portfolioStrip .proj-thumb {
-    height: 120px;
+    height: 110px;
 }
 
 #portfolioStrip .proj-emoji {
@@ -351,18 +355,19 @@ body {
 
 @media (min-width: 901px) {
     .page-grid {
-        grid-template-columns: 460px minmax(0, 1fr);
+        grid-template-columns: 380px minmax(0, 1fr);
     }
 
     .face-container {
-        font-size: 4.2rem;
+        font-size: 3.8rem;
     }
 
     .career-panel {
-        padding-top: 3.4rem;
+        padding-top: 3.8rem;
     }
 }
 
+/* 화면 폭 900px 이하: 히어로와 약력 영역을 세로 배치 */
 @media (max-width: 900px) {
     .page-grid {
         grid-template-columns: minmax(0, 1fr);
@@ -405,24 +410,24 @@ body {
 
 @media (min-width: 1600px) {
     .page-grid {
-        grid-template-columns: minmax(0, 0.55fr) minmax(0, 1.45fr);
+        grid-template-columns: minmax(0, 0.5fr) minmax(0, 1.5fr);
     }
 
     .face-container {
-        font-size: 6.2rem;
+        font-size: 5.2rem;
     }
 
     .career-panel {
-        padding: 3.4rem 3.5rem 1.4rem;
-        gap: 1rem;
+        padding: 3.8rem 2.5rem 0.8rem;
+        gap: 0.55rem;
     }
 
     .timeline {
-        gap: 0.75rem;
+        gap: 0.55rem;
     }
 
     #portfolioStrip .proj-card {
-        width: 440px;
+        width: 480px;
     }
 
     #portfolioStrip .proj-thumb {
