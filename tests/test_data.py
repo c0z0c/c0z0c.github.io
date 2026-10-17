@@ -10,6 +10,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -17,6 +18,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
 AIC_SRC = Path(r"D:\project\portfolio\AIc0z0c\src")
 
+PUBLIC_EMAIL = "c0z0c@hotmail.com"
 BANNED = ["(더미)", "더미", "dummy", "example.com", "샘플", "sample", "lorem", "\ufffd"]
 SECTIONS = {"experience", "education", "patent", "openSource"}
 
@@ -62,7 +64,10 @@ def main() -> int:
     check(len(model.projects) >= 5, f"persona projects {len(model.projects)}건")
     check(set(persona) == set(PersonaData.model_fields), "persona 최상위 키가 스키마와 정확히 일치")
     check(all(p["duration_weeks"] >= 0 for p in persona["projects"]), "duration_weeks 음수 없음")
-    check("@" in model.contact.email, "contact.email 형식")
+    check(model.contact.email == PUBLIC_EMAIL, "contact.email 이 공개용 메일로 통일")
+    all_text = "\n".join(p.read_text(encoding="utf-8") for p in DOCS.rglob("*") if p.suffix in {".html", ".json", ".js"})
+    emails = set(re.findall(r"[\w.+-]+@[\w-]+\.[\w.]+", all_text))
+    check(emails == {PUBLIC_EMAIL}, f"사이트 전체 이메일은 공개용 하나만 {emails}")
     check(len(json.dumps(persona, ensure_ascii=False)) < 40000, "persona 크기 40KB 미만(프롬프트 토큰 예산)")
 
     # ---- manifest ----
