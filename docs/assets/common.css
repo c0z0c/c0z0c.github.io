@@ -26,10 +26,40 @@
 /* 모든 페이지 본문 배경, 기본 글꼴, 기본 글자색 */
 body {
     font-family: 'JetBrains Mono', monospace;
-    background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-3) 100%);
+    background: #000;
     color: var(--accent-green);
     min-height: 100vh;
     cursor: none;
+}
+
+/* 모든 페이지가 공유하는 중앙 보드 */
+.page-wrap {
+    width: 100%;
+    max-width: 1100px !important;
+    min-height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-3) 100%);
+}
+
+@media (max-width: 1100px) {
+    .page-wrap {
+        max-width: 100% !important;
+    }
+}
+
+@media (min-width: 601px) {
+    .nav-links {
+        left: 50%;
+        right: auto;
+        width: min(1100px, calc(100% - 2.4rem));
+        justify-content: flex-end;
+        transform: translateX(-50%);
+    }
+
+    .debug-toggle {
+        left: max(1rem, calc((100vw - 1100px) / 2 + 1rem));
+    }
 }
 
 /* 공통 링크 기본 색상 */
@@ -378,11 +408,29 @@ body.debug-mode .debug-line-connection {
     overflow: hidden;
 }
 
+.proj-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.58)),
+        repeating-linear-gradient(0deg, transparent 0 5px, rgba(255, 255, 255, 0.035) 6px);
+    mix-blend-mode: screen;
+}
+
 .proj-thumb video,
 .proj-thumb .proj-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.proj-card:hover .proj-thumb video,
+.proj-card:hover .proj-thumb .proj-img {
+    transform: scale(1.06);
+    filter: saturate(1.15) contrast(1.05);
 }
 
 .proj-emoji {
@@ -420,7 +468,7 @@ body.debug-mode .debug-line-connection {
     color: var(--text-dim);
     line-height: 1.45;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -443,12 +491,6 @@ body.debug-mode .debug-line-connection {
 /* ===== 대화면(FHD 이상) 보정: rem 기반 글씨/여백을 한 단계 키운다 ===== */
 @media (min-width: 1600px) {
     html {
-        font-size: 18px;
-    }
-}
-
-@media (min-width: 1900px) {
-    html {
-        font-size: 20px;
+        font-size: 16px;
     }
 }

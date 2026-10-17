@@ -100,20 +100,21 @@
 
     // 카드 세트를 한 번 더 복제해 뒤에 이어붙이고, 첫 세트를 다 지나가면
     // 화면 밖에서 scrollLeft를 조용히 되감아 끊김 없이 무한 회전하는 것처럼 보이게 한다.
-    function setupInfiniteAutoScroll(container, singleSetWidth) {
+    function setupInfiniteAutoScroll(container, cycleWidth) {
         let paused = false;
         const SCROLL_DURATION = 1400; // ms, 느긋하게 '쓱' 넘어가는 속도
 
         function wrapIfNeeded() {
-            if (container.scrollLeft >= singleSetWidth) {
-                container.scrollLeft -= singleSetWidth;
+            if (container.scrollLeft >= cycleWidth) {
+                container.scrollLeft -= cycleWidth;
             }
         }
 
         function tick() {
             if (paused) return;
             const card = container.querySelector('.proj-card');
-            const step = card ? card.getBoundingClientRect().width + 24 : container.clientWidth * 0.8;
+            const gap = parseFloat(getComputedStyle(container).columnGap) || 0;
+            const step = card ? card.getBoundingClientRect().width + gap : container.clientWidth * 0.8;
             const target = container.scrollLeft + step;
             smoothScrollTo(container, target, SCROLL_DURATION, () => paused, wrapIfNeeded);
         }
@@ -149,7 +150,8 @@
                 // 폭을 측정한 뒤 같은 세트를 한 번 더 이어붙여 무한 루프처럼 보이게 한다.
                 const singleSetWidth = strip.scrollWidth;
                 projects.forEach(p => strip.appendChild(buildCard(p)));
-                setupInfiniteAutoScroll(strip, singleSetWidth);
+                const gap = parseFloat(getComputedStyle(strip).columnGap) || 0;
+                setupInfiniteAutoScroll(strip, singleSetWidth + gap);
             }
             if (grid) {
                 projects.forEach(p => grid.appendChild(buildCard(p)));
