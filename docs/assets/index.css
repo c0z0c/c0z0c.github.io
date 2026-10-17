@@ -10,7 +10,10 @@ body {
     width: 100%;
     max-width: 1100px;
     margin: 0 auto;
-    background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-3) 100%);
+    background:
+        radial-gradient(circle at 12% 14%, rgba(0, 255, 65, 0.1), transparent 24%),
+        radial-gradient(circle at 82% 18%, rgba(85, 105, 255, 0.12), transparent 32%),
+        linear-gradient(135deg, var(--bg-1) 0%, var(--surface-violet) 48%, var(--surface-blue) 100%);
     /* minmax(0, ...)가 없으면 fr 트랙이 자식(포트폴리오 카드 등)의
        콘텐츠 최대 폭까지 늘어나며 좁은 화면에서 레이아웃이 깨진다 */
     grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
@@ -34,8 +37,29 @@ body {
     padding: 2rem 1rem;
 }
 
+.hero-panel::before {
+    content: '';
+    position: absolute;
+    width: 72%;
+    aspect-ratio: 1;
+    border: 1px solid rgba(0, 255, 65, 0.2);
+    border-radius: 50%;
+    box-shadow: 0 0 55px rgba(0, 255, 65, 0.12), inset 0 0 35px rgba(0, 255, 65, 0.06);
+    pointer-events: none;
+}
+
+.hero-panel::after {
+    content: '';
+    position: absolute;
+    inset: 12%;
+    background: repeating-linear-gradient(90deg, transparent 0 28px, rgba(0, 255, 65, 0.035) 29px 30px);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
 .face-container {
     position: relative;
+    z-index: 1;
     font-size: clamp(3rem, 9vw, 7rem);
     font-weight: 700;
     text-shadow:
@@ -141,6 +165,8 @@ body {
 }
 
 .subtitle {
+    position: relative;
+    z-index: 1;
     margin-top: 0.8rem;
     font-size: clamp(0.95rem, 1.5vw, 1.0rem);
     line-height: 1.45;
@@ -221,7 +247,8 @@ body {
 .career-panel {
     grid-area: career;
     padding: 3.8rem 1.8rem 0.6rem;
-    border-left: 1px solid var(--border-dim);
+    border-left: 1px solid rgba(122, 138, 205, 0.26);
+    background: linear-gradient(180deg, rgba(22, 26, 54, 0.18), rgba(12, 14, 28, 0.06));
     display: flex;
     flex-direction: column;
     gap: 0.55rem;
@@ -247,8 +274,22 @@ body {
 }
 
 .timeline-item {
+    position: relative;
     border-left: 2px solid var(--accent-green);
     padding-left: 0.9rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -0.34rem;
+    top: 0.22rem;
+    width: 0.42rem;
+    height: 0.42rem;
+    border: 2px solid var(--accent-green);
+    border-radius: 50%;
+    background: var(--surface-blue);
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.45);
 }
 
 .timeline-period {
@@ -281,6 +322,7 @@ body {
     border: 1px solid var(--border-dim);
     border-radius: 3px;
     padding: 0.15rem 0.45rem;
+    background: rgba(0, 255, 255, 0.04);
 }
 
 .career-more {
@@ -295,7 +337,8 @@ body {
 /* manifest.json 카드가 #portfolioStrip에 가로로 표시되는 영역 */
 .portfolio-section {
     grid-area: portfolio;
-    border-top: 1px solid var(--border-dim);
+    border-top: 1px solid rgba(122, 138, 205, 0.26);
+    background: linear-gradient(180deg, rgba(7, 9, 20, 0.24), transparent);
     padding: 0.5rem 1.5rem 0.8rem;
 }
 
