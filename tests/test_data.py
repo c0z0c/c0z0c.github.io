@@ -20,7 +20,7 @@ AIC_SRC = Path(r"D:\project\portfolio\AIc0z0c\src")
 
 PUBLIC_EMAIL = "c0z0c@hotmail.com"
 BANNED = ["(더미)", "더미", "dummy", "example.com", "샘플", "sample", "lorem", "\ufffd"]
-SECTIONS = {"experience", "education", "patent", "openSource"}
+SECTIONS = {"experience", "education", "patent", "freeware", "openSource"}
 
 failures: list[str] = []
 
@@ -85,6 +85,13 @@ def main() -> int:
     check({t["section"] for t in career["timeline"]} <= SECTIONS, "career section 값 유효")
     check(any(t["featured"] for t in career["timeline"]), "career featured 항목 존재")
     check(sum(t["featured"] for t in career["timeline"]) <= 6, "career featured 6개 이하(홈 요약 패널)")
+
+    # ---- VComHub 는 무료 배포 프로그램(오픈소스 아님) ----
+    vcom = [json.dumps(x, ensure_ascii=False) for x in [*manifest, *career["timeline"], *persona["projects"]] if "VComHub" in json.dumps(x, ensure_ascii=False)]
+    check(len(vcom) == 3, f"VComHub 항목 3곳(manifest/career/persona) {len(vcom)}")
+    negations = ("오픈소스 아님", "오픈소스는 아니다")  # 부정 표현은 허용
+    positive = [re.sub("|".join(negations), "", s) for s in vcom]
+    check(all(not re.search(r"오픈\s*소스|open source", s, re.I) for s in positive), "VComHub 항목에 오픈소스 표기 없음")
 
     # ---- 정적 자원 ----
     for rel in ("assets/og-image.png", "favicon.png", "favicon.ico"):

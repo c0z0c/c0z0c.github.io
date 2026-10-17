@@ -7,9 +7,10 @@
         experience: '경력',
         education: '학력 / 교육',
         patent: '특허',
+        freeware: '무료 배포 프로그램',
         openSource: '오픈소스 / 패키지'
     };
-    const SECTION_ORDER = ['experience', 'education', 'patent', 'openSource'];
+    const SECTION_ORDER = ['experience', 'education', 'patent', 'freeware', 'openSource'];
 
     async function loadCareer() {
         const res = await fetch('assets/career.json', { cache: 'no-store' });
@@ -60,7 +61,7 @@
             timelineEl.appendChild(div);
         });
 
-        renderSkills(skillsEl, data.skills, 'skill-tag');
+        renderSkills(skillsEl, (data.skills || []).slice(0, 12), 'skill-tag'); // 홈은 대표 스킬만, 전체는 경력 페이지
     }
 
     // career.html 전체 페이지

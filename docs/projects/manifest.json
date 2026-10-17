@@ -1,9 +1,9 @@
 [
   {
     "id": "vcomhub",
-    "title": "[오픈소스] VComHub - 가상 COM 포트 공유",
+    "title": "[프리웨어] VComHub - 가상 COM 포트 공유",
     "description": "Windows 물리 COM 포트 1개를 여러 가상 COM 포트로 공유하는 트레이 앱. 드라이버를 내장한 단일 exe, 여러 물리 포트 동시 매핑, 트레이 RX/TX 표시 (v0.6.19, 단독 개발·지속 업데이트)",
-    "tags": ["Windows", "COM Port", "Driver", "Open Source"],
+    "tags": ["Windows", "COM Port", "Driver", "Freeware"],
     "thumbGradient": "linear-gradient(135deg, #ff7a00, #16213e)",
     "thumbEmoji": "🔌",
     "thumbImage": "projects/images/vcomhub.svg",

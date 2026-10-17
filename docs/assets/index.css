@@ -390,7 +390,7 @@ body {
 
 /* 소개글 한 줄이 너무 길어지지 않도록 읽기 좋은 폭(약 70자)으로 제한 */
 .career-panel .lead {
-    max-width: 88ch;
+    max-width: 110ch;
 }
 
 .timeline {
@@ -407,11 +407,11 @@ body {
 
 @media (min-width: 1600px) {
     .page-grid {
-        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+        grid-template-columns: minmax(0, 0.6fr) minmax(0, 1.4fr);
     }
 
     .face-container {
-        font-size: 7rem;
+        font-size: 6.6rem;
     }
 
     .career-panel {
@@ -428,6 +428,6 @@ body {
     }
 
     #portfolioStrip .proj-thumb {
-        height: 150px;
+        height: 110px;
     }
 }

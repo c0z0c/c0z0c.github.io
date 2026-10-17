@@ -3,7 +3,7 @@
 기본은 docs/ 를 로컬 http.server 로 띄워 검사하고, --base-url 로 라이브 사이트도 같은 시나리오로 검사한다.
   python tests\\test_browser.py
   python tests\\test_browser.py --base-url https://c0z0c.github.io/
-스크린샷은 tests/out/ (git 제외).
+스크린샷은 tests/capture_all.py 가 tests/out/ 에 생성한다.
 """
 
 from __future__ import annotations
@@ -85,9 +85,8 @@ def test_index(browser, base, manifest, collect):
     check(page.url.startswith(base), "index: 원래 탭 유지")
     vh = VIEWPORT[1]
     check(page.evaluate("document.querySelector('#careerTimeline').lastElementChild.getBoundingClientRect().bottom") <= vh, "index: 첫 화면에 경력 타임라인 전체")
-    check(page.evaluate("document.querySelector('.portfolio-section-head').getBoundingClientRect().top") < vh, "index: 첫 화면에 포트폴리오 스트립 헤더(스크롤 유도)")
+    check(page.evaluate("document.querySelector('#portfolioStrip .proj-card').getBoundingClientRect().bottom") <= vh, "index: 첫 화면에 포트폴리오 카드 한 줄이 잘리지 않고 전체 표시")
     check(page.evaluate("document.documentElement.scrollWidth <= window.innerWidth"), "index: 가로 스크롤 없음")
-    page.screenshot(path=str(OUT / "index.png"))
     page.context.close()
 
 
@@ -98,7 +97,6 @@ def test_career(browser, base, career, collect):
         check(needle in text, f"career: '{needle}' 표시")
     check(page.locator("#careerFull .entry").count() == len(career["timeline"]), "career: 타임라인 항목 수 일치")
     check(page.locator(".skill-pill").count() == len(career["skills"]), "career: 스킬 수 일치")
-    page.screenshot(path=str(OUT / "career.png"), full_page=True)
     page.context.close()
 
 
@@ -112,7 +110,6 @@ def test_portfolio(browser, base, manifest, collect):
     check([norm(h) for h in hrefs] == [norm(p["link"]) for p in manifest], "portfolio: 링크가 manifest 순서/값과 일치")
     check("manifest.json" not in page.inner_text(".page-sub"), "portfolio: 개발자용 안내 문구 제거")
     check(page.evaluate("document.querySelector('#portfolioGrid .proj-card').getBoundingClientRect().bottom") <= VIEWPORT[1], "portfolio: 첫 화면에 첫 줄 카드 전체")
-    page.screenshot(path=str(OUT / "portfolio.png"), full_page=True)
     page.context.close()
 
 
@@ -185,7 +182,6 @@ def test_chat(browser, base, collect):
     page.click("#chatClearBtn")
     check(page.locator("#chatWindow .bubble").count() == 4, "chat: 대화 초기화 -> 예시 대화")
     check(page.evaluate("JSON.parse(localStorage.getItem('c0z0c-aichat-v2')).historyJwt") is None, "chat: 초기화 시 history_jwt 없음")
-    page.screenshot(path=str(OUT / "aichat.png"), full_page=True)
     page.context.close()
 
 
@@ -194,7 +190,6 @@ def test_mobile(browser, base, collect):
     page.click(".nav-toggle")
     check(page.locator(".nav-links.open").count() == 1, "mobile: 햄버거 메뉴 열림")
     check(page.evaluate("document.documentElement.scrollWidth <= window.innerWidth + 1"), "mobile: 가로 스크롤 없음")
-    page.screenshot(path=str(OUT / "index_mobile.png"))
     page.context.close()
 
 

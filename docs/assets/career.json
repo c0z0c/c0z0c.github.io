@@ -51,7 +51,7 @@
       "bullets": [
         "3학년 편입 후 재학 중"
       ],
-      "featured": true
+      "featured": false
     },
     {
       "section": "education",
@@ -63,7 +63,7 @@
         "KoBART Fine-tuning(325K 데이터), U-Net 계열 문서 이미지 복원(PSNR 35.21dB), XGBoost 분류(ROC-AUC 0.8155), ElasticNet 회귀(R2 0.850)",
         "고급 프로젝트: SaaS 광고 콘텐츠 생성(시스템 아키텍트), 중급 프로젝트: RAG 나라장터 문서 검색(임베딩 엔지니어/PM)"
       ],
-      "featured": true
+      "featured": false
     },
     {
       "section": "education",
@@ -98,9 +98,9 @@
       "featured": false
     },
     {
-      "section": "openSource",
+      "section": "freeware",
       "period": "2026.10 - 지속 업데이트 (v0.6.19)",
-      "role": "VComHub: Windows 가상 COM 포트 공유 프로그램",
+      "role": "VComHub: Windows 가상 COM 포트 공유 프로그램 (무료 배포)",
       "org": "github.com/c0z0c-release/VComHub",
       "summary": "물리 COM 포트 1개를 여러 가상 COM 포트로 공유해 여러 시리얼 프로그램이 동시에 같은 장치를 쓰게 하는 Windows 트레이 앱",
       "bullets": [
@@ -122,7 +122,7 @@
         "helper-md-doc: Markdown, HTML, DOCX, PDF 양방향 변환 (Mermaid·KaTeX 렌더링)",
         "Python 3.8~3.13 지원, pytest/black/ruff 기반 품질 관리"
       ],
-      "featured": true
+      "featured": false
     }
   ],
   "skills": [

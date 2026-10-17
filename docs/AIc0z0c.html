@@ -161,12 +161,33 @@
         /* 큰 화면에서 챗 영역이 위쪽에 몰리지 않도록 최소 높이 확보 */
         @media (min-width: 1500px) {
             .page-wrap {
-                max-width: 1240px;
+                max-width: 1600px;
                 padding: 5rem 1.5rem 3rem;
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) 22rem;
+                column-gap: 2rem;
+                align-content: start;
+            }
+
+            .page-wrap > .page-title,
+            .page-wrap > .page-sub {
+                grid-column: 1 / -1;
+            }
+
+            .page-wrap > .chat-toolbar,
+            .page-wrap > .chat-window,
+            .page-wrap > .chat-form,
+            .page-wrap > .chat-suggestions {
+                grid-column: 1;
             }
 
             .page-wrap .cards {
-                margin-top: 1.6rem;
+                grid-column: 2;
+                grid-row: 3 / span 4;
+                margin-top: 0;
+                display: flex;
+                flex-direction: column;
+                align-self: start;
             }
 
             .chat-window {
