@@ -154,6 +154,269 @@
       "source_refs": [
         "https://c0z0c.github.io/codeit_ai_g2b_search/"
       ]
+    },
+    {
+      "id": "career-rail-broadcast-security",
+      "kind": "career",
+      "title": "철도 통합 방송·보안 시스템",
+      "visibility": "public",
+      "period": "2022-2025",
+      "role": "수석연구원·팀장",
+      "summary": "철도 방송 장치와 철도 보안 시스템을 개발·유지보수했다.",
+      "facts": [
+        "신분당선 3단계 방송 장치를 개발·유지보수했다.",
+        "GTX-A 방송 장치를 디버깅·유지보수했다.",
+        "서울 지하철 5호선 AVC 서비스를 디버깅·유지보수했다.",
+        "브라질 살바도르 차량 신호 시뮬레이터를 개발했다.",
+        "IEC 62443-4-1 기반 CTM과 NVR을 설계했다.",
+        "폐쇄망 환경의 해시체인 무결성 검증 시스템을 설계했다."
+      ],
+      "outcomes": [
+        "열차방송 시뮬레이션 장치 및 방법 특허에 참여했다."
+      ],
+      "limitations": [
+        "철도 프로젝트의 전체 결과를 개인 단독 성과로 표현하지 않는다."
+      ],
+      "technologies": ["C/C++", "Qt", "Embedded Linux", "IEC 62443-4-1"],
+      "related_project_ids": ["patent-2022-train-broadcast"],
+      "source_refs": ["portfolio-file:경력기술서_260708.md"]
+    },
+    {
+      "id": "career-iptv-settopbox",
+      "kind": "career",
+      "title": "IPTV·셋톱박스·VOD 플랫폼",
+      "visibility": "public",
+      "period": "2002-2011",
+      "role": "차장·팀장",
+      "summary": "IPTV, 셋톱박스, VOD, 화상회의 시스템을 개발했다.",
+      "facts": [
+        "LG Smart 7 IPTV/VOD Player를 개발했다.",
+        "TTA 표준 자막방송 기능을 개발했다.",
+        "Decoder와 Setup System을 개발했다.",
+        "Windows IOCP 기반 화상회의 서버를 설계·개발했다.",
+        "셋톱박스용 Application Manager를 개발했다."
+      ],
+      "outcomes": [
+        "셋톱박스 관련 특허에 참여했다."
+      ],
+      "limitations": [
+        "일부 셋톱박스 특허는 현재 기간이 만료된 것으로 기록되어 있다."
+      ],
+      "technologies": ["C/C++", "Linux", "Windows CE", "VC++", "ASP", "XML"],
+      "related_project_ids": ["patent-2005-application-manager", "patent-2007-udp-ftp", "patent-2008-onscreen-keyboard"],
+      "source_refs": ["portfolio-file:경력기술서_260708.md"]
+    },
+    {
+      "id": "project-n8n-attendance",
+      "kind": "project",
+      "title": "사내메신저·n8n·Notion 근태관리 자동화",
+      "visibility": "public",
+      "period": "2026.04-2026.06",
+      "role": "단독 구축",
+      "summary": "사내메신저 명령어로 근태를 기록하고 Notion에 저장하는 자동화 시스템을 구축했다.",
+      "facts": [
+        "출근·퇴근·외근·복귀 명령어를 구현했다.",
+        "근태 데이터를 Notion 데이터베이스에 저장·조회·수정했다.",
+        "self-hosted n8n과 PostgreSQL 환경을 구성했다.",
+        "Cloudflare Tunnel로 외부 webhook 수신 경로를 구성했다.",
+        "사용자별 출근 기준 시각을 적용했다.",
+        "주말·공휴일을 제외한 출근 미등록 알림을 구현했다.",
+        "다수 사용자 알림을 병렬 처리했다."
+      ],
+      "outcomes": [
+        "70~80명 규모 도입 보고서를 작성했다.",
+        "운영자가 데이터 변경만으로 명령어와 설정을 변경할 수 있게 설계했다."
+      ],
+      "limitations": [
+        "사내 환경을 대상으로 한 자동화 시스템이다.",
+        "공개 서비스의 대규모 트래픽 운영 실적은 아니다."
+      ],
+      "technologies": ["n8n", "PostgreSQL", "Notion API", "Cloudflare Tunnel", "Docker"],
+      "related_project_ids": ["career-ai-automation-consulting"],
+      "source_refs": ["portfolio-file:포트폴리오_n8n_근태.md"]
+    },
+    {
+      "id": "project-openclaw-assistant",
+      "kind": "project",
+      "title": "OpenClaw·Gemini 개인 AI 비서",
+      "visibility": "public",
+      "period": "2026",
+      "role": "프로토타입 구축",
+      "summary": "OpenClaw와 Gemini를 Telegram Bot에 연결한 온프레미스 AI 비서 프로토타입이다.",
+      "facts": [
+        "Ubuntu 서버에 Docker 컨테이너 환경을 구성했다.",
+        "OpenClaw MCP 게이트웨이를 구성했다.",
+        "Gemini 3.1 Flash Lite를 연결했다.",
+        "Telegram Bot을 사용자 인터페이스로 연결했다.",
+        "Notion 연동은 설계하고 n8n 프로젝트에서 별도로 검증했다."
+      ],
+      "outcomes": [
+        "Telegram·OpenClaw·Gemini 연동 프로토타입의 동작을 확인했다."
+      ],
+      "limitations": [
+        "Notion 연동은 OpenClaw 프로토타입에 적용하지 않았다.",
+        "정식 상용 운영 단계가 아니다."
+      ],
+      "technologies": ["Docker", "OpenClaw", "MCP", "Gemini", "Telegram Bot API"],
+      "related_project_ids": ["career-ai-automation-consulting"],
+      "source_refs": ["portfolio-file:포트폴리오_OpenClaw.md"]
+    },
+    {
+      "id": "patent-2005-application-manager",
+      "kind": "patent",
+      "title": "셋톱박스용 애플리케이션 매니저의 구축시스템 및 그 구축방법",
+      "visibility": "public",
+      "period": "2005-2007",
+      "role": "발명자",
+      "summary": "셋톱박스용 애플리케이션 매니저 구축 시스템 및 방법에 관한 특허다.",
+      "facts": [
+        "출원번호는 10-2005-0116772다.",
+        "등록번호는 10-0720164다.",
+        "출원일은 2005-12-02다.",
+        "등록일은 2007-05-14다."
+      ],
+      "outcomes": ["등록 특허다."],
+      "limitations": ["현재 권리 상태의 세부 내용은 별도 확인이 필요하다."],
+      "technologies": ["Set-top Box", "Application Manager"],
+      "related_project_ids": ["career-iptv-settopbox"],
+      "source_refs": ["patent-file:1020050116772B1.pdf"]
+    },
+    {
+      "id": "patent-2007-udp-ftp",
+      "kind": "patent",
+      "title": "유디피를 이용한 에프티피 전송 방법",
+      "visibility": "public",
+      "period": "2007",
+      "role": "발명자",
+      "summary": "UDP를 이용한 FTP 데이터 전송 방법에 관한 특허다.",
+      "facts": [
+        "출원번호는 10-2007-0024130이다.",
+        "등록번호는 10-0734247이다.",
+        "출원일은 2007-03-12다.",
+        "등록일은 2007-06-26이다."
+      ],
+      "outcomes": ["등록 특허다."],
+      "limitations": ["현재 권리 상태의 세부 내용은 별도 확인이 필요하다."],
+      "technologies": ["UDP", "FTP", "Data Transfer"],
+      "related_project_ids": ["career-iptv-settopbox"],
+      "source_refs": ["patent-file:1020070024130B1.pdf"]
+    },
+    {
+      "id": "patent-2008-onscreen-keyboard",
+      "kind": "patent",
+      "title": "온스크린 키보드 생성 방법",
+      "visibility": "public",
+      "period": "2008-2010",
+      "role": "발명자",
+      "summary": "방송 수신 장치에서 온스크린 키보드를 생성하는 방법에 관한 특허 출원이다.",
+      "facts": [
+        "출원번호는 10-2008-0127641이다.",
+        "공개번호는 10-2010-0069072다.",
+        "출원일은 2008-12-16이다."
+      ],
+      "outcomes": ["특허 공개 문서가 확인되었다."],
+      "limitations": ["등록 여부는 현재 원문에서 확정하지 않았다."],
+      "technologies": ["Set-top Box", "Broadcast", "On-screen Keyboard"],
+      "related_project_ids": ["career-iptv-settopbox"],
+      "source_refs": ["patent-file:1020080127641A.pdf"]
+    },
+    {
+      "id": "patent-2015-tv-advertising",
+      "kind": "patent",
+      "title": "텔레비전 광고방법",
+      "visibility": "public",
+      "period": "2015-2017",
+      "role": "발명자",
+      "summary": "텔레비전 광고 방법에 관한 특허 출원이다.",
+      "facts": [
+        "출원번호는 10-2015-0123459다.",
+        "공개번호는 10-2017-0027046이다.",
+        "출원일은 2015-09-01이다."
+      ],
+      "outcomes": ["경력 데이터에는 등록 특허로 기록되어 있다."],
+      "limitations": ["등록번호와 현재 권리 상태는 원문 간 대조가 필요하다."],
+      "technologies": ["Television", "Advertising"],
+      "related_project_ids": ["career-iptv-settopbox"],
+      "source_refs": ["patent-file:1020150123459A.pdf"]
+    },
+    {
+      "id": "patent-2018-plc-interference",
+      "kind": "patent",
+      "title": "PLC 네트워크 신호 간섭 판단 시스템 및 그것을 이용한 신호 간섭 판단 방법",
+      "visibility": "public",
+      "period": "2018-2019",
+      "role": "발명자",
+      "summary": "PLC 네트워크 신호 간섭 판단 시스템과 방법에 관한 특허 출원이다.",
+      "facts": [
+        "출원번호는 10-2018-0055133이다.",
+        "공개번호는 10-2019-0130429다.",
+        "출원일은 2018-05-14다."
+      ],
+      "outcomes": ["경력 데이터에는 등록 특허로 기록되어 있다."],
+      "limitations": ["등록번호와 현재 권리 상태는 원문 간 대조가 필요하다."],
+      "technologies": ["PLC", "Signal Interference", "Network"],
+      "related_project_ids": ["career-power-dcu"],
+      "source_refs": ["patent-file:1020180055133A.pdf"]
+    },
+    {
+      "id": "patent-2021-json-compression",
+      "kind": "patent",
+      "title": "JSON 포맷 압축 및 복원방법",
+      "visibility": "public",
+      "period": "2021-2023",
+      "role": "발명자",
+      "summary": "JSON 포맷의 중복 데이터를 압축하고 복원하는 방법에 관한 특허다.",
+      "facts": [
+        "출원번호는 10-2021-0097351이다.",
+        "공개번호는 10-2023-0015776이다.",
+        "출원일은 2021-07-23이다.",
+        "경력 데이터에는 등록 특허로 기록되어 있다."
+      ],
+      "outcomes": ["JSON 포맷 압축·복원 기술을 특허로 출원했다."],
+      "limitations": ["등록번호는 현재 상세 원문에서 확인하지 않았다."],
+      "technologies": ["JSON", "Data Compression", "Data Restoration"],
+      "related_project_ids": [],
+      "source_refs": ["patent-file:1020210097351A.pdf"]
+    },
+    {
+      "id": "patent-2022-train-broadcast",
+      "kind": "patent",
+      "title": "열차방송 시뮬레이션 장치 및 방법",
+      "visibility": "public",
+      "period": "2022-2024",
+      "role": "발명자",
+      "summary": "열차방송 시스템을 시험하기 위한 시뮬레이션 장치와 방법에 관한 특허다.",
+      "facts": [
+        "출원번호는 10-2022-0139310이다.",
+        "공개번호는 10-2024-0058513다.",
+        "출원일은 2022-10-26이다.",
+        "경력 데이터에는 등록 특허로 기록되어 있다."
+      ],
+      "outcomes": ["철도 통합 방송 경력과 연결되는 특허다."],
+      "limitations": ["등록번호는 현재 상세 원문에서 확인하지 않았다."],
+      "technologies": ["Train Broadcast", "Simulation", "Railway"],
+      "related_project_ids": ["career-rail-broadcast-security"],
+      "source_refs": ["patent-file:1020220139310A.pdf"]
+    },
+    {
+      "id": "patent-2025-dic-jsonl",
+      "kind": "patent",
+      "title": "JSON Lines(JSONL) 포맷 기반의 사전 압축 및 복원 방법",
+      "visibility": "public",
+      "period": "2025-현재",
+      "role": "출원인·발명자",
+      "summary": "JSONL 데이터를 사전 기반으로 압축하고 복원하는 방법에 관한 출원이다.",
+      "facts": [
+        "출원번호는 10-2025-0181403이다.",
+        "출원일은 2025-11-25다.",
+        "출원인은 김명환이다.",
+        "발명자는 김명환이다."
+      ],
+      "outcomes": ["출원 후 심사 중인 특허로 경력 데이터에 기록되어 있다."],
+      "limitations": ["등록 특허로 표현하지 않는다.", "출원 사실증명서 기준 정보다."],
+      "technologies": ["JSONL", "Dictionary Compression", "Data Restoration"],
+      "related_project_ids": [],
+      "source_refs": ["portfolio-file:[특허1_심사중]출원사실증명서_DIC-JSONL.pdf"]
     }
   ]
 }
