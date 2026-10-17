@@ -417,6 +417,45 @@
       "technologies": ["JSONL", "Dictionary Compression", "Data Restoration"],
       "related_project_ids": [],
       "source_refs": ["portfolio-file:[특허1_심사중]출원사실증명서_DIC-JSONL.pdf"]
+    },
+    {
+      "id": "creative-work-joara-1856372",
+      "kind": "creative_work",
+      "title": "셰프 오브 네크로맨서",
+      "visibility": "public",
+      "period": "2026",
+      "role": "판타지 소설 집필",
+      "summary": "조아라에 연재한 완결 판타지 소설이다.",
+      "facts": [
+        "조아라 작품 ID는 1856372다.",
+        "작품 장르는 판타지다.",
+        "작품 상태는 완결이다.",
+        "15화가 무료 공개되어 있다.",
+        "확인 가능한 회차는 75화다.",
+        "최근 확인 회차 날짜는 2026-03-05다.",
+        "작품 키워드는 모험, 요리, 환생, 판타지다.",
+        "57세 미슐랭 셰프가 사망 후 7세 고아로 환생한다.",
+        "주인공은 이세계에서 네크로맨서 능력과 요리 지식을 사용한다."
+      ],
+      "outcomes": [
+        "판타지 장편 서사를 집필했다.",
+        "요리 지식과 판타지 세계관을 결합한 설정을 구성했다.",
+        "75화 규모의 연재 작품을 완결했다."
+      ],
+      "limitations": [
+        "출간·계약·판매 실적은 작품 페이지에서 확인하지 않았다.",
+        "조회수·추천수로 작품 성과를 판단하지 않는다."
+      ],
+      "technologies": [
+        "장편 서사 구성",
+        "세계관 설계",
+        "인물·플롯 구성",
+        "연재 관리"
+      ],
+      "related_project_ids": [],
+      "source_refs": [
+        "https://www.joara.com/book/1856372"
+      ]
     }
   ]
 }
