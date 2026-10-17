@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-17",
+  "records": [
+    {
+      "id": "career-ai-automation-consulting",
+      "kind": "career",
+      "title": "사내메신저·n8n 업무 자동화 컨설팅",
+      "visibility": "public",
+      "period": "2026.04-2026.06",
+      "role": "AI 자동화 컨설턴트",
+      "summary": "중소 제조업체의 근태·외근 관리와 프로젝트 리소스 집계를 자동화했다.",
+      "facts": [
+        "70~80명 규모 도입을 전제로 요구사항을 정리했다.",
+        "단계별 AI 도입 로드맵을 작성했다.",
+        "사내메신저 명령어, n8n, Notion을 연결했다.",
+        "출퇴근·외근·복귀 흐름을 자동화했다.",
+        "Claude로 자연어 메시지를 분석했다.",
+        "프로젝트별 투입 리소스를 집계했다.",
+        "주간·월간 보고서 초안을 생성했다.",
+        "OpenClaw MCP 개인 비서 프로토타입을 구축했다.",
+        "OpenAI API 프록시의 토큰 모니터링 기능을 구축했다."
+      ],
+      "outcomes": [
+        "근태·외근 관리 자동화 도입안을 작성했다.",
+        "프로젝트별 리소스 집계와 보고서 초안 생성 흐름을 구현했다."
+      ],
+      "limitations": [
+        "70~80명 규모 도입 보고서 기준이다.",
+        "OpenClaw 개인 비서는 프로토타입이다.",
+        "정식 상용 운영 실적은 없다."
+      ],
+      "technologies": [
+        "n8n",
+        "Claude API",
+        "Notion API",
+        "MCP",
+        "OpenAI API",
+        "Docker"
+      ],
+      "related_project_ids": ["n8n-automation", "openclaw-proxy"],
+      "source_refs": []
+    },
+    {
+      "id": "career-power-dcu",
+      "kind": "career",
+      "title": "한전 전력 계량 DCU 시스템",
+      "visibility": "public",
+      "period": "2017-2022",
+      "role": "핵심 개발",
+      "summary": "계량기 데이터를 수집·암호화해 한전 서버로 전달하는 DCU를 개발했다.",
+      "facts": [
+        "RS-232/485로 계량기 데이터를 수집했다.",
+        "HPGP PLC로 계량기 데이터를 수집했다.",
+        "ARIA 기반 KCMVP 호환 AES-256 C++ 라이브러리를 개발했다.",
+        "시리얼 통신 구간에 DTLS를 적용했다.",
+        "IPv6 원격검침 KTC 표준 제정에 참여했다.",
+        "CRC 역산으로 패킷 헤더를 복원했다.",
+        "통신 장애를 분석했다."
+      ],
+      "outcomes": [
+        "IPv6 원격검침 KTC 표준 제정에 참여했다.",
+        "한전 납품에 참여했다.",
+        "상용화에 참여했다."
+      ],
+      "limitations": [
+        "전체 시스템 단독 개발로 표현하지 않는다.",
+        "프로젝트 내 담당 범위와 공동 작업 범위를 구분한다."
+      ],
+      "technologies": [
+        "C/C++",
+        "Embedded Linux",
+        "HPGP PLC",
+        "IPv6",
+        "DTLS",
+        "ARIA/AES-256"
+      ],
+      "related_project_ids": ["career-rail-security"],
+      "source_refs": []
+    },
+    {
+      "id": "project-vcomhub",
+      "kind": "project",
+      "title": "VComHub 가상 COM 포트 공유 프로그램",
+      "visibility": "public",
+      "period": "2026.10-현재",
+      "role": "단독 개발",
+      "summary": "물리 COM 포트 하나를 여러 가상 COM 포트에서 공유하는 Windows 프로그램이다.",
+      "facts": [
+        "여러 시리얼 프로그램의 수신 데이터를 각 가상 포트로 전달한다.",
+        "송신 데이터를 물리 장치로 중계한다.",
+        "보레이트를 가상 포트와 물리 포트 사이에 전달한다.",
+        "라인 제어를 가상 포트와 물리 포트 사이에 전달한다.",
+        "타임아웃을 가상 포트와 물리 포트 사이에 전달한다.",
+        "모뎀 라인을 가상 포트와 물리 포트 사이에 전달한다.",
+        "드라이버 패키지를 단일 실행 파일에 포함했다.",
+        "트레이 RX/TX 표시를 구현했다.",
+        "영어·한국어 UI를 구현했다."
+      ],
+      "outcomes": [
+        "첫 공개까지 약 1주가 걸렸다.",
+        "Windows 11 x64에서 검증했다.",
+        "v0.6.19를 공개했다."
+      ],
+      "limitations": [
+        "ARM64는 검증하지 않았다.",
+        "Secure Boot 정책 환경은 검증하지 않았다.",
+        "오픈소스가 아니다."
+      ],
+      "technologies": [
+        "C/C++",
+        "Windows Driver",
+        "COM/Serial",
+        "Win32",
+        "SBOM"
+      ],
+      "related_project_ids": [],
+      "source_refs": [
+        "https://github.com/c0z0c-release/VComHub"
+      ]
+    },
+    {
+      "id": "project-g2b-rfp-search",
+      "kind": "project",
+      "title": "나라장터 입찰 문서 검색 RAG",
+      "visibility": "public",
+      "period": "2025",
+      "role": "임베딩 엔지니어·PM",
+      "summary": "공공조달 PDF·HWP 문서를 검색하는 팀 프로젝트에서 문서 전처리와 임베딩을 담당했다.",
+      "facts": [
+        "SHA-256 파일 해시로 중복 문서를 제거했다.",
+        "HWP 표를 Markdown으로 변환하는 전처리 파이프라인을 개발했다.",
+        "문서 전처리 결과를 임베딩 검색에 연결했다.",
+        "프로젝트에서 PM 역할을 수행했다."
+      ],
+      "outcomes": [
+        "SHA-256 파일 해시로 중복 문서를 제거했다.",
+        "HWP 표를 Markdown으로 변환했다.",
+        "문서 전처리 결과를 임베딩 검색에 연결했다."
+      ],
+      "limitations": [
+        "팀 프로젝트다.",
+        "전체 결과를 개인 단독 성과로 표현하지 않는다."
+      ],
+      "technologies": [
+        "Python",
+        "LangChain",
+        "FAISS",
+        "OpenAI Embeddings",
+        "HWP",
+        "Markdown"
+      ],
+      "related_project_ids": [],
+      "source_refs": [
+        "https://c0z0c.github.io/codeit_ai_g2b_search/"
+      ]
+    }
+  ]
+}
