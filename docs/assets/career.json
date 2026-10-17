@@ -19,7 +19,7 @@
       "section": "experience",
       "period": "2011.12 - 2025.05",
       "role": "수석연구원 / 팀장",
-      "org": "(주)중앙첨단소재 연구소 (구 유비코드·엠오디·씨그널·에코엠넷)",
+      "org": "(주)중앙첨단소재 연구소",
       "summary": "철도 통합 방송·보안 시스템, 한전 전력 계량 DCU, Android 병상 TV 플랫폼 개발",
       "bullets": [
         "철도 보안(2024~2025): IEC 62443-4-1 기반 CTM/NVR 설계, 폐쇄망용 경량 해시체인 무결성 검증 시스템 설계",
@@ -100,14 +100,15 @@
     {
       "section": "freeware",
       "period": "2026.10 - 지속 업데이트 (v0.6.19)",
-      "role": "VComHub: Windows 가상 COM 포트 공유 프로그램 (무료 배포)",
-      "org": "github.com/c0z0c-release/VComHub",
+      "role": "VComHub",
+      "org": "Windows 가상 COM 공유",
       "summary": "물리 COM 포트 1개를 여러 가상 COM 포트로 공유해 여러 시리얼 프로그램이 동시에 같은 장치를 쓰게 하는 Windows 트레이 앱",
       "bullets": [
         "각 프로그램이 자기 가상 COM(예: COM11, COM12)을 열면 장치 수신 데이터는 모두에게 전달되고, 누가 쓰든 장치로 전달 (여러 물리 포트 동시 매핑 지원)",
         "보레이트, 라인 제어, 타임아웃, 모뎀 라인을 가상 COM에서 물리 COM으로 그대로 전달하는 투명 중계",
         "드라이버 패키지를 내장한 단일 exe (설치 프로그램 불필요), 자체 서명 인증서와 SBOM 제공, 영어/한국어 UI",
-        "단독 개발, 첫 공개까지 약 1주 · 이후 지속 업데이트 예정 (Windows 11 x64 검증, ARM64 등은 미검증)"
+        "단독 개발, 첫 공개까지 약 1주 · 이후 지속 업데이트 예정 (Windows 11 x64 검증, ARM64 등은 미검증)",
+        "github.com/c0z0c-release/VComHub"
       ],
       "featured": true
     },

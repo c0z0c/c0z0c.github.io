@@ -182,7 +182,7 @@ a {
     padding: 0.5rem 0;
     border-bottom: 1px solid #222;
     transition: all 0.3s ease;
-    font-size: 1.15rem;
+    font-size: 1.0rem;
 }
 
 .project-item:last-child {
@@ -409,7 +409,7 @@ body.debug-mode .debug-line-connection {
 }
 
 .proj-title {
-    font-size: 1.05rem;
+    font-size: 0.8rem;
     font-weight: 700;
     color: var(--accent-green);
     line-height: 1.3;
@@ -420,7 +420,7 @@ body.debug-mode .debug-line-connection {
     color: var(--text-dim);
     line-height: 1.45;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -433,7 +433,7 @@ body.debug-mode .debug-line-connection {
 }
 
 .proj-tag {
-    font-size: 0.95rem;
+    font-size: 0.7rem;
     color: var(--accent-purple-text);
     border: 1px solid var(--border-dim);
     border-radius: 3px;
