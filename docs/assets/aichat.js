@@ -63,6 +63,17 @@
         chatWindow.scrollTop = chatWindow.scrollHeight;
     }
 
+    function renderLoading(chatWindow) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble loading';
+        bubble.textContent = 'c0z0c가 답변을 준비하고 있습니다';
+        bubble.setAttribute('role', 'status');
+        bubble.setAttribute('aria-live', 'polite');
+        chatWindow.appendChild(bubble);
+        chatWindow.setAttribute('aria-busy', 'true');
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
+
     function shortName(name) {
         return name.split(/ - | \(/)[0].trim();
     }
@@ -127,6 +138,7 @@
             input.value = '';
             input.disabled = true;
             sendBtn.disabled = true;
+            renderLoading(chatWindow);
 
             try {
                 const reply = await window.AIc0z0cApi.sendChat(text, state.historyJwt);
@@ -139,6 +151,7 @@
             } finally {
                 saveState(state);
                 render(chatWindow, state.messages);
+                chatWindow.setAttribute('aria-busy', 'false');
                 input.disabled = false;
                 sendBtn.disabled = false;
                 input.focus();

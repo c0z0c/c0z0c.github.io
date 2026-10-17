@@ -69,6 +69,33 @@
             color: #ffb3b3;
         }
 
+        @keyframes chat-loading-pulse {
+            0%, 100% { opacity: 0.45; }
+            50% { opacity: 1; }
+        }
+
+        .bubble.loading {
+            color: var(--text-dimmer);
+            border-style: dashed;
+            animation: chat-loading-pulse 1.2s ease-in-out infinite;
+        }
+
+        .bubble.loading::after {
+            content: '...';
+            display: inline-block;
+            width: 1.5em;
+            overflow: hidden;
+            vertical-align: bottom;
+            animation: chat-loading-pulse 1.2s ease-in-out infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .bubble.loading,
+            .bubble.loading::after {
+                animation: none;
+            }
+        }
+
         /* 추천 질문, 입력창, 저장 상태, 초기화 버튼 등 대화 조작 UI */
         .chat-suggestions {
             display: flex;
