@@ -16,12 +16,12 @@ description: c0z0c.github.io를 beta 브랜치에 push한 뒤 GitHub Actions(pag
 
 ## 2. 절차
 
-1. 로컬 테스트: `D:\venvs\aws_lambda\Scripts\python.exe -I tests\run_all.py` (데이터 검증 + 로컬 서버 브라우저 테스트)
+1. 로컬 테스트: `D:\venvs\aws_lambda\Scripts\python.exe -I D:\project\portfolio\tests\run_all.py` (데이터 검증 + 로컬 서버 브라우저 테스트 + 검토 캡처). 테스트는 공개 저장소에 포함하지 않고 저장소 밖 `D:\project\portfolio\tests`에서 관리한다
 2. `git branch --show-current`가 `beta`인지 확인 후 commit, `git push origin beta`
 3. 배포 검증: `python .claude\skills\pages-deploy-verify\verify_deploy.py`
    - HEAD SHA에 해당하는 Actions run이 `completed/success`가 될 때까지 폴링 (기본 최대 10분)
    - `docs/` 의 서비스 대상 파일을 `git show HEAD:<path>` 내용과 라이브 응답을 바이트 비교 (CDN 캐시 반영 대기 포함)
-4. 라이브 브라우저 테스트: `python tests\test_browser.py --base-url https://c0z0c.github.io/`
+4. 라이브 브라우저 테스트: `D:\venvs\aws_lambda\Scripts\python.exe -I D:\project\portfolio\tests\test_browser.py --base-url https://c0z0c.github.io/`
 5. 실패 시: Actions run 로그 URL(`html_url`)과 `conclusion`을 보고하고, 라이브가 이전 커밋이면 재시도 대기 후에도 불일치하는 파일 목록을 그대로 보고한다. 성공으로 단정하지 않는다.
 
 ## 3. 판정 기준
@@ -36,4 +36,4 @@ description: c0z0c.github.io를 beta 브랜치에 push한 뒤 GitHub Actions(pag
 
 - 한 번 push하면 Actions run이 `beta`로 2개(build, deploy) 보일 수 있다. SHA로 구분한다.
 - 라이브 확인 요청에는 `?v=<timestamp>` 쿼리를 붙여 브라우저/CDN 캐시를 피한다.
-- 데이터 파일(`docs/prompts/system_prompt.json` 등)은 AIc0z0c가 GitHub Raw로 읽으므로 스키마를 깨는 변경은 `tests/test_data.py`의 PersonaData 검증을 반드시 통과해야 한다.
+- 데이터 파일(`docs/prompts/system_prompt.json` 등)은 AIc0z0c가 GitHub Raw로 읽으므로 스키마를 깨는 변경은 `D:\project\portfolio\tests\test_data.py`의 PersonaData 검증을 반드시 통과해야 한다.
