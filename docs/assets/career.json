@@ -40,7 +40,7 @@
         "MP3 Player, Application Manager, 셋톱박스용 ASP Web Server, ActiveX 화상전화·화상메일 개발 (2003~2008)",
         "Windows IOCP 기반 화상회의 서버와 화상감지 시스템 설계·개발 (2002~2003)"
       ],
-      "featured": false
+      "featured": true
     },
     {
       "section": "education",
@@ -51,7 +51,7 @@
       "bullets": [
         "3학년 편입 후 재학 중"
       ],
-      "featured": false
+      "featured": true
     },
     {
       "section": "education",
