@@ -68,6 +68,19 @@ def test_index(browser, base, manifest, collect):
     page.click("text=Projects")
     check(page.locator("#projectMenu.show").count() == 1, "index: Projects 드롭다운 열림")
     check("[더미]" not in page.content() and "dummy" not in page.inner_text("body").lower(), "index: 더미 문구 없음")
+    # 히어로 문구 링크 + 외부 링크는 새 탭
+    hero = page.eval_on_selector_all(".subtitle a", "els => els.map(e => e.href)")
+    check(len(hero) == 7 and hero[0] == "https://github.com/c0z0c" and all("pypi.org/project/helper-" in h for h in hero[1:]), "index: 히어로 문구 7개 링크(GitHub/PyPI)")
+    ext = page.eval_on_selector_all("a[href^='http']", "els => els.map(e => [e.target, e.rel])")
+    check(len(ext) >= 15 and all(t == "_blank" and "noopener" in r for t, r in ext), f"index: 외부 링크 {len(ext)}개 모두 새 탭+noopener")
+    internal = page.eval_on_selector_all(".nav-link[href$='.html']", "els => els.map(e => e.target)")
+    check(len(internal) >= 3 and all(t == "" for t in internal), "index: 내부 페이지 링크는 같은 탭")
+    with page.context.expect_page() as popup_info:
+        page.click(".subtitle a >> nth=1")
+    popup = popup_info.value
+    check("pypi.org/project/helper-dev-utils" in popup.url or popup.url == "about:blank", "index: 히어로 링크 클릭 시 새 탭 열림")
+    popup.close()
+    check(page.url.startswith(base), "index: 원래 탭 유지")
     page.screenshot(path=str(OUT / "index.png"))
     page.context.close()
 

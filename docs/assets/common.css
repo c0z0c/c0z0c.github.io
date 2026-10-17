@@ -399,7 +399,7 @@ body.debug-mode .debug-line-connection {
 }
 
 .proj-tag {
-    font-size: 0.6rem;
+    font-size: 0.68rem;
     color: var(--accent-purple-text);
     border: 1px solid var(--border-dim);
     border-radius: 3px;
@@ -409,12 +409,12 @@ body.debug-mode .debug-line-connection {
 /* ===== 대화면(FHD 이상) 보정: rem 기반 글씨/여백을 한 단계 키운다 ===== */
 @media (min-width: 1600px) {
     html {
-        font-size: 17px;
+        font-size: 18px;
     }
 }
 
 @media (min-width: 1900px) {
     html {
-        font-size: 18px;
+        font-size: 20px;
     }
 }

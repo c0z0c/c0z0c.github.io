@@ -83,6 +83,14 @@
         });
     });
 
+    // ===== 외부 링크는 새 탭으로 열기 =====
+    // 이 사이트의 페이지(상대 경로)는 같은 탭, 절대 URL(Blog, PyPI, GitHub, 프로젝트 등)은 새 탭.
+    // 새 탭에서는 opener 접근을 막는다(noopener).
+    document.querySelectorAll('a[href^="http"]').forEach(link => {
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+    });
+
     // ===== 드롭다운 메뉴 처리 =====
     function toggleMenu(menuId, event) {
         event.preventDefault();

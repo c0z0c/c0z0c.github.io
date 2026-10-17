@@ -42,9 +42,8 @@ def thumb_svg(accent: str, title: str, caption: str) -> str:
   <rect width="640" height="360" fill="url(#bg)"/>
   <rect width="640" height="360" fill="url(#grid)"/>
   <rect x="0" y="0" width="10" height="360" fill="{accent}" fill-opacity="0.7"/>
-  <text x="56" y="128" font-family="Consolas, 'Courier New', monospace" font-size="18" fill="{accent}" fill-opacity="0.8">&gt; c0z0c/portfolio</text>
-  <text x="56" y="196" font-family="Consolas, 'Courier New', monospace" font-size="64" font-weight="700" fill="{accent}">{title}</text>
-  <text x="56" y="236" font-family="Consolas, 'Courier New', monospace" font-size="21" fill="#cfd8dc">{caption}</text>
+  <text x="56" y="188" font-family="Consolas, 'Courier New', monospace" font-size="72" font-weight="700" fill="{accent}">{title}</text>
+  <text x="56" y="236" font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#e0e6ea">{caption}</text>
 </svg>
 """
 
