@@ -5,10 +5,11 @@
 (function () {
     const SECTION_LABEL = {
         experience: '경력',
-        education: '학력',
+        education: '학력 / 교육',
+        patent: '특허',
         openSource: '오픈소스 / 패키지'
     };
-    const SECTION_ORDER = ['experience', 'education', 'openSource'];
+    const SECTION_ORDER = ['experience', 'education', 'patent', 'openSource'];
 
     async function loadCareer() {
         const res = await fetch('assets/career.json', { cache: 'no-store' });

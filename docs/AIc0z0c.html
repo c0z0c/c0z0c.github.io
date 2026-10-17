@@ -58,6 +58,36 @@
             color: #cdefd8;
         }
 
+        .bubble.error {
+            align-self: center;
+            background: rgba(255, 68, 68, 0.08);
+            border: 1px solid rgba(255, 68, 68, 0.4);
+            color: #ffb3b3;
+        }
+
+        .chat-suggestions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .chip {
+            font-family: inherit;
+            font-size: 0.68rem;
+            color: var(--accent-cyan);
+            background: none;
+            border: 1px solid var(--border-dim);
+            border-radius: 999px;
+            padding: 0.3rem 0.8rem;
+            cursor: pointer;
+        }
+
+        .chip:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(0, 255, 255, 0.08);
+        }
+
         .chat-toolbar {
             display: flex;
             justify-content: space-between;
@@ -148,12 +178,22 @@
             margin-bottom: 0.5rem;
         }
 
+        .info-card a {
+            color: var(--accent-cyan);
+        }
+
         .info-card p {
             font-size: 0.7rem;
             color: var(--text-dim);
             line-height: 1.6;
         }
     </style>
+    <meta name="description" content="22년 임베디드·시스템 엔지니어링 위에 LLM·RAG·에이전트·n8n 자동화를 더하는 AI/SW 엔지니어 김명환(c0z0c)의 포트폴리오">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AI c0z0c">
+    <meta property="og:description" content="22년 임베디드·시스템 엔지니어링 위에 LLM·RAG·에이전트·n8n 자동화를 더하는 AI/SW 엔지니어 김명환(c0z0c)의 포트폴리오">
+    <meta property="og:image" content="https://c0z0c.github.io/assets/og-image.png">
+    <meta property="og:url" content="https://c0z0c.github.io/AIc0z0c.html">
     <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
 </head>
 
@@ -175,37 +215,39 @@
 
     <div class="page-wrap">
         <h1 class="page-title">AI c0z0c</h1>
-        <p class="page-sub">c0z0c의 프로젝트/블로그 내용을 기반으로 답하는 AI 페르소나 (더미 데모 — 실제 응답 연동 전)</p>
+        <p class="page-sub">c0z0c의 경력·프로젝트·특허·오픈소스 이력을 근거로 답하는 AI 페르소나입니다. <span id="chatModeNote"></span></p>
 
         <div class="chat-toolbar">
-            <span class="storage-note">💾 대화 내용은 이 브라우저의 local storage에만 저장됩니다 (서버 전송 없음)</span>
+            <span class="storage-note">💾 대화 기록은 이 브라우저의 local storage에 저장되고, 질문은 답변 생성을 위해 백엔드(POST /chat)로 전송됩니다</span>
             <button class="chat-clear-btn" id="chatClearBtn" type="button">대화 초기화</button>
         </div>
 
         <div class="chat-window" id="chatWindow"></div>
 
         <form class="chat-form" id="chatForm">
-            <input type="text" class="chat-input" id="chatInput" placeholder="c0z0c에게 물어보세요... (예: helper-hwp는 뭐하는 패키지예요?)" autocomplete="off" maxlength="500">
+            <input type="text" class="chat-input" id="chatInput" placeholder="c0z0c에게 물어보세요... (예: helper-hwp는 뭐하는 패키지예요?)" autocomplete="off" maxlength="2000">
             <button type="submit" class="chat-send-btn" id="chatSendBtn">전송</button>
         </form>
+        <div class="chat-suggestions" id="chatSuggestions"></div>
 
         <div class="cards">
             <div class="info-card">
                 <h3>기반 데이터</h3>
-                <p>포트폴리오 프로젝트, 블로그 글, pip 패키지 문서 (예정)</p>
+                <p>경력기술서, 포트폴리오 프로젝트(<a href="projects/manifest.json">manifest.json</a>), 경력(<a href="assets/career.json">career.json</a>), 페르소나 프롬프트(<a href="prompts/system_prompt.json">system_prompt.json</a>)</p>
             </div>
             <div class="info-card">
-                <h3>현재 상태</h3>
-                <p>입력/히스토리 저장(local storage)까지 구현 — 실제 LLM 응답 연동은 추후 진행 예정</p>
+                <h3>답변 방식</h3>
+                <p>인젝션 판정, 이력 기반 답변 생성, 근거 검증의 3단계를 거치며 과장 없이 직접 경험·인접 역량·학습 필요를 구분해 답합니다</p>
             </div>
             <div class="info-card">
-                <h3>목표</h3>
-                <p>방문자가 c0z0c의 이력/프로젝트를 대화형으로 탐색할 수 있게 하는 것</p>
+                <h3>문의</h3>
+                <p>자세한 논의는 c0z0c@naver.com 으로 연락해 주세요</p>
             </div>
         </div>
     </div>
 
     <script src="assets/common.js"></script>
+    <script src="assets/aichat-api.js"></script>
     <script src="assets/aichat.js"></script>
 </body>
 

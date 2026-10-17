@@ -1,63 +1,132 @@
 {
-  "lead": "AI/백엔드 중심 개발자. 문서 자동화(HWP/MD/PDF)와 검색·RAG 파이프라인을 주로 다룹니다. 반복 업무를 pip 패키지로 만들어 공유하는 걸 좋아합니다. (샘플/더미 데이터)",
+  "lead": "22년 임베디드·시스템 소프트웨어 엔지니어링 위에 LLM·RAG·에이전트·n8n 자동화를 더하는 AI/SW 엔지니어 김명환입니다. 철도·전력 같은 고신뢰 환경에서 쌓은 감각으로, 실제로 운영 가능한 AI 시스템과 문서 자동화 도구(PyPI)를 만듭니다. 특허 등록 7건 · 출원 1건(심사 중).",
   "timeline": [
     {
       "section": "experience",
-      "period": "2024.03 - 현재",
-      "role": "AI Developer",
-      "org": "(주)더미컴퍼니",
-      "summary": "RAG 기반 사내 문서 검색 시스템 개발, 문서 변환 파이프라인 구축",
+      "period": "2026.04 - 2026.06",
+      "role": "AI 자동화 컨설턴트 (프리랜서)",
+      "org": "중소 제조업체",
+      "summary": "사내메신저 + n8n + Claude 기반 근태·외근 관리와 프로젝트 리소스 집계 자동화, 사내 AI 도입 로드맵 수립",
       "bullets": [
-        "HWP/PDF/Markdown 소스를 대상으로 한 사내 RAG 기반 문서 검색 시스템 구축",
-        "문서 변환 파이프라인 설계 (HWP → PDF/MD/Text, MD → DOC)",
-        "사내 도구를 pip 패키지로 배포해 팀 전체가 재사용할 수 있도록 함"
+        "사내메신저 봇 명령어 기반 출·퇴근·외근·복귀 전 과정을 n8n·Notion으로 자동화 (70~80명 규모 도입 보고서 작성)",
+        "메신저 자연어 메시지를 Claude(Haiku 4.5 / Sonnet 4.6)로 분석해 프로젝트별 투입 리소스를 정량화, 주간·월간 보고서 초안 자동 생성",
+        "OpenClaw(MCP) + Gemini 개인 비서 프로토타입과 OpenAI API 프록시(실시간 토큰 모니터링) 구축",
+        "전사 부서별 AI 도입 로드맵 및 단계별 검토 보고서 작성"
       ],
       "featured": true
     },
     {
       "section": "experience",
-      "period": "2023.01 - 2024.02",
-      "role": "Backend Developer",
-      "org": "예시테크",
-      "summary": "API 서버 및 데이터 파이프라인 개발, 사내 도구 자동화",
+      "period": "2011.12 - 2025.05",
+      "role": "수석연구원 / 팀장",
+      "org": "(주)중앙첨단소재 연구소 (구 유비코드·엠오디·씨그널·에코엠넷)",
+      "summary": "철도 통합 방송·보안 시스템, 한전 전력 계량 DCU, Android 병상 TV 플랫폼 개발",
       "bullets": [
-        "사내 분석 플랫폼을 위한 REST API 및 데이터 파이프라인 개발",
-        "반복적인 리포팅 작업을 자동화해 수작업을 약 40% 절감 (샘플 수치)"
+        "철도 보안(2024~2025): IEC 62443-4-1 기반 CTM/NVR 설계, 폐쇄망용 경량 해시체인 무결성 검증 시스템 설계",
+        "철도 통합 방송(2022~2025): 신분당선 3단계·GTX-A·서울 5호선 개발·유지보수, 브라질 살바도르 차량 신호 시뮬레이터 독자 개발(특허 등록)",
+        "한전 DCU(2017~2022): ARIA 기반 KCMVP 호환 AES-256 C++ 라이브러리와 시리얼 구간 DTLS 암호화 구현, IPv6 원격검침 KTC 표준 제정 참여, 한전 납품·상용화",
+        "개인병상 방송 플랫폼(2012~2017): Android 기반 TV 플랫폼 설계·개발, 병원 상용화"
+      ],
+      "featured": true
+    },
+    {
+      "section": "experience",
+      "period": "2002 - 2011",
+      "role": "차장 / 팀장",
+      "org": "(주)셀런",
+      "summary": "LG IPTV/셋톱박스, VOD 플랫폼, 화상회의·화상감지 시스템 개발",
+      "bullets": [
+        "LG Smart 7 IPTV/VOD Player, TTA 표준 자막방송, Decoder·Setup System 개발 (2008~2011)",
+        "MP3 Player, Application Manager, 셋톱박스용 ASP Web Server, ActiveX 화상전화·화상메일 개발 (2003~2008)",
+        "Windows IOCP 기반 화상회의 서버와 화상감지 시스템 설계·개발 (2002~2003)"
+      ],
+      "featured": false
+    },
+    {
+      "section": "education",
+      "period": "2026.03 - 재학 중",
+      "role": "서울사이버대학교 인공지능학과 3학년 편입",
+      "org": "",
+      "summary": "인공지능 전공 학부 과정 재학 중",
+      "bullets": [
+        "3학년 편입 후 재학 중"
       ],
       "featured": true
     },
     {
       "section": "education",
-      "period": "2022",
-      "role": "Codeit AI 부트캠프 수료",
+      "period": "2025.07 - 2026.01",
+      "role": "Codeit AI 엔지니어 부트캠프 4기 수료 (1,250시간)",
       "org": "",
-      "summary": "AI/ML 실무 프로젝트 다수 수행 (분류, 검색, 생성형 AI)",
+      "summary": "딥러닝(자연어처리, 컴퓨터비전) 기반 AI 엔지니어 과정, 분류·회귀·이미지 복원·RAG·생성형 AI 팀 프로젝트 수행",
       "bullets": [
-        "이미지 분류, 문서 검색, 생성형 AI 팀 프로젝트 다수 수행"
+        "KoBART Fine-tuning(325K 데이터), U-Net 계열 문서 이미지 복원(PSNR 35.21dB), XGBoost 분류(ROC-AUC 0.8155), ElasticNet 회귀(R2 0.850)",
+        "고급 프로젝트: SaaS 광고 콘텐츠 생성(시스템 아키텍트), 중급 프로젝트: RAG 나라장터 문서 검색(임베딩 엔지니어/PM)"
       ],
       "featured": true
     },
     {
-      "section": "openSource",
-      "period": "진행 중",
-      "role": "pip: helper-dev-utils, helper-plot-hangul, helper-md-doc, helper-hwp",
+      "section": "education",
+      "period": "졸업",
+      "role": "농협대학교 전자계산학과",
       "org": "",
-      "summary": "한글 플로팅, HWP/Markdown 문서 변환용 유틸리티 패키지 배포",
+      "summary": "",
+      "bullets": [],
+      "featured": false
+    },
+    {
+      "section": "patent",
+      "period": "2025.11 - 심사 중",
+      "role": "10-2025-0181403 JSONL 포맷 기반 사전 압축 및 복원 방법",
+      "org": "",
+      "summary": "키·값·키세트 3중 사전으로 대용량 JSONL을 라인 단위로 압축 (직접 심사청구)",
       "bullets": [
-        "한글 플로팅 및 HWP/Markdown 문서 변환용 유틸리티 패키지"
+        "키·값·키세트 3중 사전 구축, 라인 단위 처리로 수백만 라인 파일을 메모리 효율적으로 처리"
       ],
       "featured": false
+    },
+    {
+      "section": "patent",
+      "period": "등록",
+      "role": "10-2021-0097351 JSON 포맷 압축 및 복원 방법 외 3건",
+      "org": "",
+      "summary": "JSON 압축(10~30% 절감), 열차방송 시뮬레이션 장치(10-2022-0139310), PLC 신호 간섭 판단(10-2020-5174900), 텔레비전 광고방법(10-2017-0054735)",
+      "bullets": [
+        "JSON 키/값 중복 탐지 후 대응코드 치환 무손실 압축, 표준 JSON 구문 유지",
+        "이 밖에 셋톱박스 관련 3건은 기간 만료 (등록 7건 중 포함)"
+      ],
+      "featured": false
+    },
+    {
+      "section": "openSource",
+      "period": "진행 중",
+      "role": "PyPI: helper-hwp, helper-md-doc, helper-plot-hangul, helper-dev-utils, helper-streamlit-utils",
+      "org": "pypi.org/user/c0z0c",
+      "summary": "한글 문서(HWP/HWPX)·Markdown 변환, Matplotlib 한글 깨짐 해결, 개발 생산성 도구 배포·유지보수",
+      "bullets": [
+        "helper-hwp: HWP 5.x / HWP97 / HWPX 파싱, 텍스트·Markdown·HTML·DOCX·PDF 변환, CLI 12개 명령",
+        "helper-md-doc: Markdown, HTML, DOCX, PDF 양방향 변환 (Mermaid·KaTeX 렌더링)",
+        "Python 3.8~3.13 지원, pytest/black/ruff 기반 품질 관리"
+      ],
+      "featured": true
     }
   ],
   "skills": [
     "Python",
-    "JavaScript",
+    "C/C++",
+    "Qt/QML",
+    "Embedded Linux",
     "FastAPI",
-    "PyTorch",
+    "LangGraph",
     "LangChain",
-    "RAG / Vector Search",
-    "SQL",
+    "RAG / FAISS",
+    "n8n",
+    "MCP",
+    "PyTorch",
     "Docker",
-    "Git"
+    "Google Cloud Run",
+    "PostgreSQL",
+    "DTLS / ARIA / AES-256",
+    "IEC 62443"
   ]
 }

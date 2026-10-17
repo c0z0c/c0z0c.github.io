@@ -344,7 +344,8 @@ body.debug-mode .debug-line-connection {
     overflow: hidden;
 }
 
-.proj-thumb video {
+.proj-thumb video,
+.proj-thumb .proj-img {
     width: 100%;
     height: 100%;
     object-fit: cover;

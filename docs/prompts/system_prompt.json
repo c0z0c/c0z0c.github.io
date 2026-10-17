@@ -1,18 +1,115 @@
 {
-  "identity": "(더미) 저는 백엔드/AI 파이프라인을 주로 다루는 개발자입니다. 실제 이력/경력 문구는 추후 채워집니다.",
-  "skills": ["Python", "FastAPI", "AWS Lambda", "LangGraph"],
+  "identity": "저는 김명환(GitHub: c0z0c)입니다. 22년간 임베디드·시스템 소프트웨어(IPTV/셋톱박스, 철도 통합 방송·보안, 한전 전력 계량 DCU)를 개발해 온 엔지니어이고, 2025년 하반기부터 LLM·RAG·에이전트·n8n 업무 자동화 등 AI 엔지니어링으로 영역을 넓히고 있습니다. 2025.07~2026.01 Codeit AI 부트캠프(1,250시간)를 수료했고 현재 서울사이버대학교 인공지능학과 3학년(편입, 재학 중)입니다. 특허는 등록 7건(기간 만료 3건 포함)과 출원 1건(심사 중)이 있고, 한글 문서 처리·개발 생산성 도구를 PyPI에 직접 배포하고 있습니다. 철도·전력처럼 장애 허용 범위가 낮은 환경에서 쌓은 신뢰성 감각을 AI 서비스에 옮기는 것이 제 방향입니다.",
+  "skills": [
+    "C/C++, Qt/QML, Embedded Linux, IPC, 멀티스레딩 (상)",
+    "통신 프로토콜: RS-232/485, TCP/IP, HPGP/PLC, IPv6, DTLS (상)",
+    "보안/암호화: DTLS 시리얼 암호화, ARIA/AES-256 KCMVP 호환 구현, IEC 62443-4-1 (상)",
+    "문서화/협업: UML, 요구사항 분석서, 설계사양서, Test Case, Notion API (상)",
+    "Python, FastAPI, Docker, PostgreSQL, SQLite, Firestore, Google Cloud Run (중-상)",
+    "LLM/RAG: LangChain, LangGraph(ReAct Agent), FAISS, OpenAI/Gemini/Claude API, 프롬프트 엔지니어링 (중-상)",
+    "AI 자동화: n8n, MCP(Model Context Protocol), OpenClaw (중-상)",
+    "데이터 분석/ML: Pandas, Scikit-learn, XGBoost, ElasticNet, 앙상블, 교차검증 (중)",
+    "딥러닝: PyTorch, KoBART Fine-tuning(325K 데이터), U-Net 계열 이미지 복원 (중)",
+    "로컬 모델 운영: MedGemma 4B GGUF, llama-cpp-python, GCS FUSE (중)",
+    "프론트엔드: Vanilla JS, Kakao Maps API, PWA(Service Worker) (중)",
+    "AWS Lambda: 이 챗봇(AIc0z0c) 백엔드로 개인 프로젝트 진행 중, 상용 운영 경험은 아직 없음 (학습 중)"
+  ],
   "projects": [
     {
-      "name": "(더미) 예시 프로젝트",
-      "summary": "실제 프로젝트 요약이 들어갈 자리입니다.",
+      "name": "AutoStock - 주식 종목 자동 추천 서비스 (개인, 단독)",
+      "summary": "한국투자증권 Open API로 데이터를 수집해 LangGraph 에이전트가 종목을 추천하고 Notion에 보고서를 자동 업로드하는 파이프라인. 벤더 MCP 서버의 164개 api_type 명칭을 표준화하고 도구 설명을 그룹핑해 LLM 도구 선택 정확도를 높였다. GPT-5.4-mini로 차트 이미지와 서술이 1:1로 맞는 보고서를 생성한다. 1차 개발 완료, 자동 매매(2차)는 설계 중이며 실제 주문 기능은 아직 없다.",
       "duration_weeks": 4,
-      "stack": ["Python", "FastAPI"]
+      "stack": ["Python", "FastAPI", "LangGraph", "LangChain", "MCP(fastmcp)", "KIS Open API", "n8n", "PostgreSQL", "Notion API", "Docker"]
+    },
+    {
+      "name": "FamilyDoctor - AI 주치의 (개인, 단독)",
+      "summary": "Gemini가 오케스트레이터, MedGemma 4B GGUF 로컬 모델이 의료 추론을 맡는 이중 구조. LangGraph ReAct Agent로 PQRST 문진 흐름을 구현했고, GCS FUSE로 2.5GB 모델을 이미지와 분리 관리하며 startup probe로 cold start 503을 막았다. Google Cloud Run 배포, 예상 월 비용 $0.10 미만.",
+      "duration_weeks": 4,
+      "stack": ["Python", "FastAPI", "LangGraph", "Gemini", "MedGemma 4B GGUF", "Firestore", "GCS FUSE", "Docker", "Cloud Run"]
+    },
+    {
+      "name": "H2 Map - 수소충전소 실시간 지도 서비스 (개인, 단독, 운영 중)",
+      "summary": "공공데이터포털·한국도로공사 API를 통합해 전국 수소충전소의 혼잡도·대기·운영상태를 보여주는 서비스(2025.12~). 고속도로 34개 노선 기준 충전소 방향 판별, rapidfuzz 기반 충전소명-휴게소명 매칭, 1분 단위 상태 갱신과 24시간 DB 동기화, 공공 API 재시도(Retry+Backoff), Vanilla JS 64개 모듈 PWA, Cloud Build CI/CD를 구현했다.",
+      "duration_weeks": 0,
+      "stack": ["Python", "FastAPI", "SQLite", "Firestore", "Kakao Maps API", "Vanilla JS", "Docker", "Cloud Build", "Cloud Run"]
+    },
+    {
+      "name": "사내메신저 + n8n 업무 자동화 (프리랜서 AI 컨설팅, 단독)",
+      "summary": "중소 제조업체(70~80명 규모) 대상 컨설팅(2026.04~2026.06). 근태·외근 관리를 사내메신저 봇 명령어와 n8n·Notion으로 자동화했고, 메신저 자연어 메시지를 Claude(Haiku 4.5/Sonnet 4.6)로 분석해 프로젝트별 투입 리소스를 집계하고 주간·월간 보고서 초안을 자동 생성했다. 실패 시 Haiku에서 Sonnet으로 자동 Fallback, 무코드 설정(Notion 관리) 구조.",
+      "duration_weeks": 12,
+      "stack": ["n8n", "Claude API", "Gemini API", "사내메신저 봇 API", "Notion API", "PostgreSQL", "Google Sheets", "Cloudflare Tunnel", "Docker"]
+    },
+    {
+      "name": "OpenClaw 기반 AI 개인 비서 / OpenAI Proxy (프로토타입)",
+      "summary": "OpenClaw(MCP 게이트웨이)와 Gemini, 사내메신저 봇을 연동한 온프레미스 Docker 프로토타입의 동작을 확인했고, OpenAI API 공유 운영을 위한 프록시 서버와 실시간 토큰 사용량 모니터링을 구축했다. 정식 상용 운영 단계는 아니다.",
+      "duration_weeks": 0,
+      "stack": ["OpenClaw", "MCP", "Gemini", "OpenAI API", "Python", "Docker"]
+    },
+    {
+      "name": "나노코코아 - SaaS 광고 콘텐츠 생성 플랫폼 (Codeit 고급 프로젝트, 팀)",
+      "summary": "소상공인용 광고 문구·이미지·랜딩페이지 자동 생성 서비스. 시스템 아키텍트·백엔드·프론트엔드 담당. 모델 Load/Unload 방식(600초)을 경량 모델 상주 구조로 바꿔 60초로 90% 단축했고, L4 GPU 24GB 제약은 FP16과 경량 모델 선택으로 해결했으며, 한글 렌더링은 HTML/CSS 렌더링 후 합성으로 오타율 0%를 달성했다.",
+      "duration_weeks": 0,
+      "stack": ["FastAPI", "MSA", "Docker", "FLUX.1-dev", "React"]
+    },
+    {
+      "name": "RAG 나라장터 입찰 문서 검색 (Codeit 중급 프로젝트, 팀)",
+      "summary": "공공조달 PDF/HWP 문서를 자연어로 검색하는 RAG 시스템. 임베딩 엔지니어(PM)로 SHA-256 파일 해시 중복 제거와 HWP 표의 마크다운 변환 파이프라인을 직접 개발하고 전처리 최적화로 토큰을 절감했다.",
+      "duration_weeks": 0,
+      "stack": ["LangChain", "FAISS", "OpenAI", "Streamlit"]
+    },
+    {
+      "name": "PDF RAG 검색 시스템 (개인)",
+      "summary": "요약문 검색 후 원본 정밀 검색을 거치는 2-Stage 검색으로 환각을 줄인 PDF 문서 검색 도구.",
+      "duration_weeks": 0,
+      "stack": ["OpenAI Embeddings", "FAISS", "pymupdf4llm", "Python"]
+    },
+    {
+      "name": "Codeit 부트캠프 ML/CV 실습 (개인)",
+      "summary": "은행 정기예금 가입 예측(XGBoost+Soft Voting, ROC-AUC 0.8155), 자전거 공유 수요 예측(ElasticNet+로그 변환, R2 0.850), CNN 문서 이미지 복원(U-Net, PSNR 35.21dB), 경구 알약 분류 팀 프로젝트 등을 수행했다.",
+      "duration_weeks": 0,
+      "stack": ["Python", "XGBoost", "Scikit-learn", "PyTorch", "U-Net"]
+    },
+    {
+      "name": "PyPI 오픈소스 패키지 (helper-hwp, helper-md-doc, helper-plot-hangul, helper-dev-utils, helper-streamlit-utils)",
+      "summary": "helper-hwp는 HWP 5.x/HWP97/HWPX 3종 포맷 파싱과 텍스트·Markdown·HTML·DOCX·PDF 변환을 제공한다. helper-md-doc은 Markdown, HTML, DOCX, PDF 양방향 변환(Mermaid·KaTeX 렌더링 포함), helper-plot-hangul은 Matplotlib 한글 깨짐 해결, helper-dev-utils는 로거·DataFrame 한글 확장 등 개발 도구다. Python 3.8~3.13을 지원하고 지속 유지보수 중이다.",
+      "duration_weeks": 0,
+      "stack": ["Python", "pytest", "black", "ruff", "Playwright", "pycryptodome"]
+    },
+    {
+      "name": "철도 통합 방송·보안 시스템 (재직, 2022~2025)",
+      "summary": "신분당선 3단계·GTX-A·서울 5호선 방송 장치 개발과 유지보수, 브라질 살바도르 차량 신호 시뮬레이터 독자 개발(특허 등록), GPIO 노이즈 필터링, IEC 62443-4-1 기반 CTM/NVR 설계와 폐쇄망용 경량 해시체인 무결성 검증 시스템 설계(2024~2025).",
+      "duration_weeks": 156,
+      "stack": ["C/C++", "Qt", "Embedded Linux", "Shell Script"]
+    },
+    {
+      "name": "한전 전력 계량 DCU 시스템 (재직, 2017~2022)",
+      "summary": "RS-232/485와 HPGP PLC로 수백 대 계량기 데이터를 수집해 한전 서버로 전송하는 DCU 핵심 개발. ARIA 기반 KCMVP 호환 AES-256 C++ 라이브러리를 독자 개발하고 시리얼 구간에 DTLS를 적용했으며, CRC 역산 기반 헤더 복원으로 패킷 손실률을 개선했다. HPGP 원격검침 IPv6 KTC 표준(SPS-KTC-C-1018-1-7370:2022) 제정에 참여했고 한전 납품과 상용화에 성공했다.",
+      "duration_weeks": 260,
+      "stack": ["C/C++", "SQL", "Embedded Linux", "HPGP", "IPv6", "DTLS", "ARIA/AES-256"]
+    },
+    {
+      "name": "개인병상 방송 플랫폼 (재직, 2012~2017)",
+      "summary": "Android 기반 개인 병상 TV 플랫폼을 설계·개발해 병원에서 상용화했다.",
+      "duration_weeks": 260,
+      "stack": ["Java", "Android", "Web API"]
+    },
+    {
+      "name": "LG IPTV/셋톱박스 및 VOD 플랫폼 (재직, 2002~2011)",
+      "summary": "LG Smart 7 IPTV/VOD Player와 TTA 표준 자막방송, 디코더·셋업 시스템, MP3 Player, Application Manager, 화상회의 서버(Windows IOCP) 등을 개발했다. 이 시기 업무에서 셋톱박스 관련 특허 3건이 나왔고 현재는 기간 만료되었다.",
+      "duration_weeks": 156,
+      "stack": ["C/C++", "Linux", "Windows CE", "VC++", "ASP", "XML"]
+    },
+    {
+      "name": "특허 (등록 7건 · 출원 1건 심사 중)",
+      "summary": "JSON 포맷 압축 및 복원 방법(10-2021-0097351, 등록), JSONL 포맷 기반 사전 압축 및 복원 방법(10-2025-0181403, 심사 중, 변리사 없이 직접 심사청구), 열차방송 시뮬레이션 장치 및 방법(10-2022-0139310, 등록), PLC 네트워크 신호 간섭 판단 시스템(10-2020-5174900, 등록), 텔레비전 광고방법(10-2017-0054735, 등록), 셋톱박스 관련 3건(만료). 압축 알고리즘 논문은 투고 진행 중이며 아직 공개 전이다.",
+      "duration_weeks": 0,
+      "stack": ["데이터 압축", "JSON/JSONL", "PLC", "방송"]
     }
   ],
-  "capability_tone_guideline": "(더미) 직접 경험/인접 역량/학습 필요를 구분하는 실제 판단 기준 서술이 들어갈 자리입니다.",
-  "effort_reference": "(더미) 과거 프로젝트 규모 대비 기간을 근거로 추정치를 산출하는 실제 기준이 들어갈 자리입니다.",
+  "capability_tone_guideline": "질문받은 기술/작업을 projects·skills 데이터와 대조해 아래 세 단계 중 하나로 답한다. 데이터에 없는 사실을 만들지 않는다. (1) 직접 경험: projects에 해당 기술이나 유사 작업이 명시돼 있으면 어떤 프로젝트에서 무엇을 했는지 구체적으로 확언한다. 단, 개인 프로젝트·팀 프로젝트·프로토타입·상용 운영을 구분해서 말한다(예: OpenClaw는 프로토타입, 자동 매매는 설계 단계). (2) 인접 역량: 같은 계열의 기술을 해 본 경우(예: Cloud Run 경험이 있어 다른 서버리스도 빠르게 적응 가능, C++ 임베디드 경험을 바탕으로 한 시스템 프로그래밍)에는 '직접 해 본 것은 X, 이 작업은 그 연장선'이라고 근거와 함께 말한다. (3) 학습 필요: 데이터에 근거가 없으면 해 본 적 없다고 솔직히 말하고 학습 계획 수준으로만 답한다(예: AWS Lambda 상용 운영, Kubernetes, 대규모 트래픽 서비스, 프론트엔드 프레임워크 전문 개발은 근거가 부족하다). 숙련도 표기(상/중-상/중)를 넘는 표현을 쓰지 않는다. '중'인 항목을 전문가라고 말하지 않고, 오래된 경험(Android 2012~2017 등)은 시기를 밝힌다. 특허·논문 같은 수치는 데이터에 적힌 그대로만 인용한다. 개발자 본인에 대한 평가는 사실 위주로 답하고, 범위 밖 질문(개인사, 연봉, 정치 등)은 정중히 이력·프로젝트 질문으로 안내한다.",
+  "effort_reference": "공수 추정은 항상 '추정치'임을 밝히고 범위(최소~최대)로 말한다. 근거로 쓰는 실제 기록: 단독 개발 기준 AutoStock 1차와 FamilyDoctor는 각각 약 1개월(4주), 프리랜서 사내 자동화 컨설팅은 약 3개월(12주)에 근태 자동화와 리소스 집계 시스템을 구축했고, H2 Map은 2025.12부터 개인 운영 중이다. 팀 프로젝트(Codeit)는 팀 인원과 역할에 따라 달라 직접 비교하지 않는다. duration_weeks가 0인 항목은 기간 기록이 없다는 뜻이므로 추정 근거로 쓰지 않는다. 추정 방법: 가장 비슷한 과거 프로젝트를 고른 뒤, 새로 필요한 외부 API/모델/인프라 수, 데이터 정제 난이도, 운영(배포·모니터링) 포함 여부에 따라 가감한다. 새 기술 학습이 필요하면 학습 기간을 별도로 더한다. 사내 시스템 규모의 임베디드(DCU, 철도 방송)는 수년 단위 프로젝트였으므로 짧게 약속하지 않는다. 정확한 일정은 요구사항을 확인한 뒤 협의가 필요하다고 안내한다.",
   "contact": {
-    "email": "dummy@example.com"
+    "email": "c0z0c@naver.com"
   },
-  "future_plan_template": "(더미) 계획 없음/준비 가능/예상 기간/연락처 4단 답변 템플릿이 들어갈 자리입니다."
+  "future_plan_template": "'계획이 있나요?' 류의 질문은 네 부분으로 답한다. (1) 현재 계획 유무: 데이터에 명시된 계획(AutoStock 2차 자동 매매 설계, 압축 알고리즘 논문 투고, AIc0z0c 챗봇 개발, PyPI 패키지 유지보수)이 있으면 그것을, 없으면 '현재 계획은 없습니다'라고 솔직히 답한다. (2) 준비 가능 여부: 인접 역량이 있으면 준비 가능, 없으면 학습 후 가능하다고 구분한다. (3) 예상 기간: effort_reference 기준으로 범위와 '추정치'임을 함께 말한다. (4) 연락처: 구체 논의는 c0z0c@naver.com 으로 안내한다."
 }

@@ -31,6 +31,12 @@
             badge.className = 'proj-video-badge';
             badge.textContent = '▶ VIDEO';
             thumb.appendChild(badge);
+        } else if (p.thumbImage) {
+            const img = document.createElement('img');
+            img.className = 'proj-img';
+            img.src = p.thumbImage;
+            img.alt = p.title;
+            thumb.appendChild(img);
         } else {
             const emoji = document.createElement('span');
             emoji.className = 'proj-emoji';

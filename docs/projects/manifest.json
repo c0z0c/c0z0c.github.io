@@ -1,80 +1,112 @@
 [
   {
-    "id": "rag-pdf-search",
-    "title": "[LLM] PDF 문서 검색 도구 (RAG)",
-    "description": "AI 기반 PDF 문서 검색 도구 - 임베딩 검색 + LLM 응답 생성",
-    "tags": [
-      "RAG",
-      "LLM",
-      "Python"
-    ],
+    "id": "autostock",
+    "title": "[AI 에이전트] AutoStock - 주식 종목 자동 추천",
+    "description": "한국투자증권 Open API 데이터를 LangGraph 에이전트가 분석해 종목을 추천하고 Notion에 보고서를 자동 업로드하는 개인 프로젝트 (1차 개발 완료)",
+    "tags": ["LangGraph", "MCP", "FastAPI", "n8n"],
     "thumbGradient": "linear-gradient(135deg, #00ff41, #16213e)",
-    "thumbEmoji": "📄",
-    "link": "https://github.com/c0z0c/pdf_search_openai",
-    "media": {
-      "type": "none"
-    }
+    "thumbEmoji": "📈",
+    "thumbImage": "projects/images/autostock.svg",
+    "link": "https://app.notion.com/p/3acfed3f4f3f80e6bac5db90aadb8ea3",
+    "media": { "type": "none" }
+  },
+  {
+    "id": "familydoctor",
+    "title": "[AI 에이전트] FamilyDoctor - AI 주치의",
+    "description": "Gemini 오케스트레이터와 MedGemma 4B GGUF 로컬 모델 이중 구조, LangGraph 문진 에이전트를 Cloud Run에 서버리스로 배포",
+    "tags": ["LangGraph", "Gemini", "MedGemma", "Cloud Run"],
+    "thumbGradient": "linear-gradient(135deg, #ff4d8d, #16213e)",
+    "thumbEmoji": "🩺",
+    "thumbImage": "projects/images/familydoctor.svg",
+    "link": "https://github.com/c0z0c/familydoctor",
+    "media": { "type": "none" }
+  },
+  {
+    "id": "h2map",
+    "title": "[서비스] H2 Map - 수소충전소 실시간 지도",
+    "description": "공공 API를 통합해 전국 수소충전소 혼잡도·운영상태를 1분 단위로 갱신하는 운영 중 서비스 (Cloud Run, PWA)",
+    "tags": ["FastAPI", "Kakao Maps", "Cloud Run", "PWA"],
+    "thumbGradient": "linear-gradient(135deg, #00ffff, #16213e)",
+    "thumbEmoji": "⛽",
+    "thumbImage": "projects/images/h2map.svg",
+    "link": "https://h2map-p4wpy5hxaa-du.a.run.app",
+    "media": { "type": "none" }
+  },
+  {
+    "id": "n8n-automation",
+    "title": "[AI 자동화] 사내메신저 + n8n 업무 자동화",
+    "description": "70~80명 규모 근태·외근 관리 자동화와 Claude 기반 메신저 분석 리소스 집계·보고서 자동 생성 (프리랜서 컨설팅)",
+    "tags": ["n8n", "Claude", "Notion", "Automation"],
+    "thumbGradient": "linear-gradient(135deg, #ffb000, #16213e)",
+    "thumbEmoji": "🤖",
+    "thumbImage": "projects/images/n8n-automation.svg",
+    "link": "https://youtu.be/eV88hV7wLAg",
+    "media": { "type": "none" }
   },
   {
     "id": "ad-content-gen",
-    "title": "[고급프로젝트] 광고 생성",
-    "description": "생성형 AI를 활용한 광고 콘텐츠 자동 생성 프로젝트",
-    "tags": [
-      "Generative AI",
-      "Team Project"
-    ],
+    "title": "[고급프로젝트] 나노코코아 - 광고 생성 SaaS",
+    "description": "소상공인용 광고 문구·이미지·랜딩페이지 자동 생성. 모델 상주 구조로 생성 시간 600초에서 60초로 90% 단축 (팀, 시스템 아키텍트)",
+    "tags": ["FastAPI", "MSA", "FLUX.1-dev", "Team Project"],
     "thumbGradient": "linear-gradient(135deg, #b503fc, #16213e)",
     "thumbEmoji": "🎯",
+    "thumbImage": "projects/images/nanococoa.svg",
     "link": "https://krapnuyij.github.io/codeit-ai-3team-ad-content",
-    "media": {
-      "type": "video",
-      "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
-      "poster": ""
-    }
+    "media": { "type": "none" }
   },
   {
     "id": "g2b-rfp-search",
-    "title": "[중급프로젝트] RFP 문서 검색",
-    "description": "나라장터 RFP 문서를 대상으로 한 검색/분석 서비스",
-    "tags": [
-      "Search",
-      "NLP"
-    ],
-    "thumbGradient": "linear-gradient(135deg, #00ffff, #16213e)",
-    "thumbEmoji": "🔍",
+    "title": "[중급프로젝트] RFP 문서 검색 (RAG)",
+    "description": "나라장터 입찰 PDF/HWP 문서를 자연어로 검색하는 RAG 시스템. SHA-256 중복 제거와 HWP 표 변환 파이프라인 개발 (팀, 임베딩/PM)",
+    "tags": ["RAG", "LangChain", "FAISS", "Team Project"],
+    "thumbGradient": "linear-gradient(135deg, #4da3ff, #16213e)",
+    "thumbEmoji": "🔎",
+    "thumbImage": "projects/images/g2b-rfp-search.svg",
     "link": "https://c0z0c.github.io/codeit_ai_g2b_search/",
-    "media": {
-      "type": "none"
-    }
+    "media": { "type": "none" }
+  },
+  {
+    "id": "pdf-rag-search",
+    "title": "[LLM] PDF 문서 검색 도구 (RAG)",
+    "description": "요약문 검색 후 원본 정밀 검색을 거치는 2-Stage 검색으로 환각을 줄인 PDF 검색 도구",
+    "tags": ["RAG", "OpenAI", "FAISS", "Python"],
+    "thumbGradient": "linear-gradient(135deg, #00ff41, #16213e)",
+    "thumbEmoji": "📄",
+    "thumbImage": "projects/images/pdf-rag-search.svg",
+    "link": "https://github.com/c0z0c/pdf_search_openai",
+    "media": { "type": "none" }
   },
   {
     "id": "pill-classifier",
     "title": "[초급프로젝트] AI 경구 알약 분류",
-    "description": "이미지 분류 모델을 활용한 경구 알약 자동 분류",
-    "tags": [
-      "Computer Vision",
-      "Classification"
-    ],
+    "description": "이미지 모델을 활용한 경구 알약 자동 분류 (Codeit 팀 프로젝트)",
+    "tags": ["Computer Vision", "Classification", "Team Project"],
     "thumbGradient": "linear-gradient(135deg, #ff4444, #16213e)",
     "thumbEmoji": "💊",
+    "thumbImage": "projects/images/pill-classifier.svg",
     "link": "https://c0z0c.github.io/codeit_ai_health_eat/",
-    "media": {
-      "type": "none"
-    }
+    "media": { "type": "none" }
+  },
+  {
+    "id": "pip-packages",
+    "title": "[오픈소스] PyPI helper 패키지",
+    "description": "helper-hwp(HWP/HWPX 변환), helper-md-doc(Markdown 양방향 변환), helper-plot-hangul 등 5종 배포·유지보수",
+    "tags": ["PyPI", "HWP", "Markdown", "Open Source"],
+    "thumbGradient": "linear-gradient(135deg, #ffd43b, #16213e)",
+    "thumbEmoji": "📦",
+    "thumbImage": "projects/images/pip-packages.svg",
+    "link": "https://pypi.org/user/c0z0c/",
+    "media": { "type": "none" }
   },
   {
     "id": "sprint-mission",
     "title": "[미션] AI 미션 모음",
-    "description": "학습 과정에서 진행한 AI 미션 모음집",
-    "tags": [
-      "Mission",
-      "AI"
-    ],
+    "description": "Codeit AI 4기 과정에서 진행한 스프린트 미션·위클리 페이퍼·학습 자료 보관함",
+    "tags": ["Mission", "AI", "Study"],
     "thumbGradient": "linear-gradient(135deg, #888, #16213e)",
-    "thumbEmoji": "🧩",
+    "thumbEmoji": "🗂️",
+    "thumbImage": "projects/images/sprint-mission.svg",
     "link": "https://c0z0c.github.io/sprint_mission",
-    "media": {
-      "type": "none"
-    }
+    "media": { "type": "none" }
   }
 ]
