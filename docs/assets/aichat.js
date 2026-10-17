@@ -7,20 +7,6 @@
 (function () {
     const STORAGE_KEY = 'c0z0c-aichat-v2';
 
-    // 첫 방문 시 보여주는 예시 대화 (실제 이력 데이터 기반, 서버 응답이 아님)
-    const SEED_HISTORY = [
-        { role: 'user', text: 'c0z0c은 어떤 일을 해온 개발자인가요?' },
-        {
-            role: 'bot',
-            text: '22년간 IPTV/셋톱박스, 철도 통합 방송·보안, 한전 전력 계량(DCU) 같은 임베디드·시스템 소프트웨어를 개발했고, 2025년 하반기부터 LLM·RAG·에이전트·n8n 자동화로 영역을 넓히고 있습니다. (예시 대화)'
-        },
-        { role: 'user', text: 'helper-hwp는 뭘 해주나요?' },
-        {
-            role: 'bot',
-            text: 'HWP 5.x / HWP97 / HWPX 파일을 파싱해 텍스트, Markdown, HTML, DOCX, PDF로 변환해주는 PyPI 패키지입니다. (예시 대화)'
-        }
-    ];
-
     const GENERIC_QUESTIONS = [
         '주로 어떤 기술을 다루나요?',
         'RAG나 LLM 에이전트를 직접 만들어 본 적 있나요?',
@@ -28,7 +14,13 @@
     ];
 
     function emptyState() {
-        return { messages: SEED_HISTORY.slice(), historyJwt: null };
+        return { messages: [], historyJwt: null };
+    }
+
+    function removeLegacySeed(messages) {
+        const isLegacySeed = messages[0]?.text === 'c0z0c은 어떤 일을 해온 개발자인가요?'
+            && messages[1]?.text?.endsWith('(예시 대화)');
+        return isLegacySeed ? messages.slice(4) : messages;
     }
 
     function loadState() {
@@ -37,7 +29,7 @@
             if (!raw) return emptyState();
             const parsed = JSON.parse(raw);
             if (!parsed || !Array.isArray(parsed.messages)) return emptyState();
-            return { messages: parsed.messages, historyJwt: parsed.historyJwt || null };
+            return { messages: removeLegacySeed(parsed.messages), historyJwt: parsed.historyJwt || null };
         } catch (err) {
             console.warn('챗 상태 로드 실패, 초기값 사용:', err);
             return emptyState();
@@ -78,6 +70,15 @@
         return name.split(/ - | \(/)[0].trim();
     }
 
+    function subjectParticle(name) {
+        const lastChar = name.trim().slice(-1);
+        const code = lastChar.charCodeAt(0);
+        if (code >= 0xac00 && code <= 0xd7a3) {
+            return (code - 0xac00) % 28 === 0 ? '는' : '은';
+        }
+        return /[aeiou]$/i.test(lastChar) ? '는' : '은';
+    }
+
     async function renderSuggestions(container, onPick) {
         if (!container) return;
         let questions = GENERIC_QUESTIONS.slice();
@@ -85,7 +86,10 @@
             const res = await fetch('prompts/system_prompt.json', { cache: 'no-store' });
             if (!res.ok) throw new Error('system_prompt.json load failed: ' + res.status);
             const persona = await res.json();
-            const projectQs = persona.projects.slice(0, 4).map(p => `${shortName(p.name)}은(는) 어떤 프로젝트인가요?`);
+            const projectQs = persona.projects.slice(0, 4).map(p => {
+                const name = shortName(p.name);
+                return `${name}${subjectParticle(name)} 어떤 프로젝트인가요?`;
+            });
             questions = projectQs.concat(GENERIC_QUESTIONS);
         } catch (err) {
             console.warn('추천 질문 로드 실패, 기본 질문 사용:', err);
