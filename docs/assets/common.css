@@ -7,9 +7,10 @@
     --accent-green: #00ff41;
     --accent-red: #ff4444;
     --accent-purple: #b503fc;
+    --accent-purple-text: #d386ff; /* 작은 글씨용: 어두운 배경 대비 6:1 이상 */
     --accent-cyan: #00ffff;
-    --text-dim: #888;
-    --text-dimmer: #555;
+    --text-dim: #b4b4b4;
+    --text-dimmer: #8f8f8f;
     --border-dim: #333;
 }
 
@@ -92,7 +93,7 @@ a {
 }
 
 .nav-link {
-    color: var(--accent-purple);
+    color: var(--accent-purple-text);
     text-decoration: none;
     font-size: 0.9rem;
     transition: all 0.3s ease;
@@ -399,8 +400,21 @@ body.debug-mode .debug-line-connection {
 
 .proj-tag {
     font-size: 0.6rem;
-    color: var(--accent-purple);
+    color: var(--accent-purple-text);
     border: 1px solid var(--border-dim);
     border-radius: 3px;
     padding: 0.1rem 0.4rem;
+}
+
+/* ===== 대화면(FHD 이상) 보정: rem 기반 글씨/여백을 한 단계 키운다 ===== */
+@media (min-width: 1600px) {
+    html {
+        font-size: 17px;
+    }
+}
+
+@media (min-width: 1900px) {
+    html {
+        font-size: 18px;
+    }
 }

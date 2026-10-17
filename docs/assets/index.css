@@ -138,7 +138,7 @@ body {
 .subtitle {
     margin-top: 1.2rem;
     font-size: clamp(0.75rem, 1.8vw, 1rem);
-    color: #888;
+    color: var(--text-dim);
     text-align: center;
     opacity: 0;
     animation: fadeInUp 2s ease 1s forwards;
@@ -221,7 +221,7 @@ body {
 
 .timeline-period {
     font-size: 0.65rem;
-    color: var(--accent-purple);
+    color: var(--accent-purple-text);
 }
 
 .timeline-role {
@@ -253,7 +253,7 @@ body {
 
 .career-more {
     font-size: 0.7rem;
-    color: var(--accent-purple);
+    color: var(--accent-purple-text);
     text-decoration: none;
     align-self: flex-start;
     border-bottom: 1px dashed var(--accent-purple);
@@ -281,7 +281,7 @@ body {
 
 .portfolio-section-head a {
     font-size: 0.65rem;
-    color: var(--accent-purple);
+    color: var(--accent-purple-text);
     text-decoration: none;
     border-bottom: 1px dashed var(--accent-purple);
 }
@@ -352,5 +352,57 @@ body {
 
     .hero-panel {
         min-height: 60vh;
+    }
+}
+
+/* ===== 대화면 보정 (index) ===== */
+/* 고정 네비게이션(우상단)이 whoami 제목을 가리지 않도록 패널 상단 여백 확보 */
+@media (min-width: 901px) {
+    .career-panel {
+        padding-top: 5.2rem;
+    }
+}
+
+/* 소개글 한 줄이 너무 길어지지 않도록 읽기 좋은 폭(약 70자)으로 제한 */
+.career-panel .lead {
+    max-width: 72ch;
+}
+
+.timeline {
+    max-width: 62rem;
+}
+
+.timeline-desc {
+    font-size: 0.72rem;
+}
+
+.portfolio-section {
+    padding-bottom: 2.2rem;
+}
+
+@media (min-width: 1600px) {
+    .page-grid {
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    }
+
+    .face-container {
+        font-size: 7rem;
+    }
+
+    .career-panel {
+        padding: 4.4rem 4rem 1.4rem;
+        gap: 1.2rem;
+    }
+
+    .timeline {
+        gap: 0.75rem;
+    }
+
+    #portfolioStrip .proj-card {
+        width: 440px;
+    }
+
+    #portfolioStrip .proj-thumb {
+        height: 112px;
     }
 }

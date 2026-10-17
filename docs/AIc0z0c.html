@@ -158,6 +158,17 @@
             cursor: not-allowed;
         }
 
+        /* 큰 화면에서 챗 영역이 위쪽에 몰리지 않도록 최소 높이 확보 */
+        @media (min-width: 1500px) {
+            .page-wrap {
+                max-width: 1040px;
+            }
+
+            .chat-window {
+                min-height: 34vh;
+            }
+        }
+
         .cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
