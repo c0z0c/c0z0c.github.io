@@ -294,7 +294,7 @@ body {
 
 .timeline-period {
     font-size: 0.95rem;
-    color: var(--accent-purple-text);
+    color: var(--accent-blue-text);
 }
 
 .timeline-role {
@@ -327,10 +327,10 @@ body {
 
 .career-more {
     font-size: 1.02rem;
-    color: var(--accent-purple-text);
+    color: var(--accent-blue-text);
     text-decoration: none;
     align-self: flex-start;
-    border-bottom: 1px dashed var(--accent-purple);
+    border-bottom: 1px dashed var(--accent-blue);
 }
 
 /* ===== 하단: 포트폴리오 스크롤 스트립 ===== */
@@ -357,9 +357,9 @@ body {
 
 .portfolio-section-head a {
     font-size: 0.95rem;
-    color: var(--accent-purple-text);
+    color: var(--accent-blue-text);
     text-decoration: none;
-    border-bottom: 1px dashed var(--accent-purple);
+    border-bottom: 1px dashed var(--accent-blue);
 }
 
 .portfolio-section {

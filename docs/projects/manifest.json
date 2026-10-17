@@ -59,7 +59,7 @@
     "title": "[고급프로젝트] 나노코코아 - 광고 생성 SaaS",
     "description": "소상공인용 광고 문구·이미지·랜딩페이지 자동 생성. 모델 상주 구조로 생성 시간 600초에서 60초로 90% 단축 (팀, 시스템 아키텍트)",
     "tags": ["FastAPI", "MSA", "FLUX.1-dev", "Team Project"],
-    "thumbGradient": "linear-gradient(135deg, #b503fc, #16213e)",
+    "thumbGradient": "linear-gradient(135deg, #6ea8ff, #16213e)",
     "thumbEmoji": "🎯",
     "thumbImage": "projects/images/nanococoa.svg",
     "link": "https://krapnuyij.github.io/codeit-ai-3team-ad-content",

@@ -8,9 +8,9 @@
     --bg-3: #16213e;
     --accent-green: #00ff41;
     --accent-red: #ff4444;
-    --accent-purple: #b503fc;
-    --accent-purple-text: #d386ff; /* 작은 글씨용: 어두운 배경 대비 6:1 이상 */
-    --accent-cyan: #00ffff;
+    --accent-blue: #6ea8ff;
+    --accent-blue-text: #a9c7ff; /* 작은 글씨용: 어두운 배경 대비 6:1 이상 */
+    --accent-cyan: #5ee7ff;
     --surface-blue: #10182f;
     --surface-violet: #18152d;
     --text-dim: #b4b4b4;
@@ -133,7 +133,7 @@ a {
 }
 
 .nav-link {
-    color: var(--accent-purple-text);
+    color: var(--accent-blue-text);
     text-decoration: none;
     font-size: 1.05rem;
     transition: all 0.3s ease;
@@ -487,7 +487,7 @@ body.debug-mode .debug-line-connection {
 
 .proj-tag {
     font-size: 0.7rem;
-    color: var(--accent-purple-text);
+    color: var(--accent-blue-text);
     border: 1px solid var(--border-dim);
     border-radius: 3px;
     padding: 0.12rem 0.4rem;
