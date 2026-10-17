@@ -12,6 +12,15 @@
     };
     const SECTION_ORDER = ['experience', 'education', 'patent', 'freeware', 'openSource'];
 
+    function periodStart(period) {
+        const match = String(period).match(/(20\d{2})(?:\.(\d{1,2}))?/);
+        return match ? Number(`${match[1]}${(match[2] || '00').padStart(2, '0')}`) : 0;
+    }
+
+    function latestFirst(items) {
+        return [...items].sort((a, b) => periodStart(b.period) - periodStart(a.period));
+    }
+
     // career.json은 화면 출력용 약력 데이터다. AI 참고용 detail.json은 백엔드가 읽는다.
     async function loadCareer() {
         const res = await fetch('assets/career.json', { cache: 'no-store' });
@@ -41,7 +50,7 @@
         if (leadEl) leadEl.textContent = data.lead;
 
         timelineEl.innerHTML = '';
-        data.timeline.filter(item => item.featured).forEach(item => {
+        latestFirst(data.timeline.filter(item => item.featured)).forEach(item => {
             const div = document.createElement('div');
             div.className = 'timeline-item';
 
@@ -77,7 +86,7 @@
 
         root.innerHTML = '';
         SECTION_ORDER.forEach(sectionKey => {
-            const items = data.timeline.filter(item => item.section === sectionKey);
+            const items = latestFirst(data.timeline.filter(item => item.section === sectionKey));
             if (!items.length) return;
 
             const section = document.createElement('section');
