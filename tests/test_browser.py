@@ -23,6 +23,8 @@ from playwright.sync_api import Page, sync_playwright
 ROOT = Path(__file__).resolve().parent.parent
 OUT = Path(__file__).resolve().parent / "out"
 failures: list[str] = []
+# 실제 브라우저 콘텐츠 영역: 1080 모니터 최대화 시 작업표시줄/제목줄/탭/주소창/북마크바/스크롤바를 뺀 값
+VIEWPORT = (1905, 920)
 
 
 def check(cond: bool, msg: str) -> None:
@@ -43,7 +45,7 @@ def start_local_server() -> tuple[http.server.ThreadingHTTPServer, str]:
     return server, f"http://127.0.0.1:{server.server_address[1]}/"
 
 
-def open_page(browser, base: str, path: str, collect: dict, viewport=(1280, 800)) -> Page:
+def open_page(browser, base: str, path: str, collect: dict, viewport=VIEWPORT) -> Page:
     """페이지를 열고 콘솔 에러/요청 실패를 collect[path]에 모은다."""
     ctx = browser.new_context(viewport={"width": viewport[0], "height": viewport[1]})
     page = ctx.new_page()
@@ -81,6 +83,10 @@ def test_index(browser, base, manifest, collect):
     check("pypi.org/project/helper-dev-utils" in popup.url or popup.url == "about:blank", "index: 히어로 링크 클릭 시 새 탭 열림")
     popup.close()
     check(page.url.startswith(base), "index: 원래 탭 유지")
+    vh = VIEWPORT[1]
+    check(page.evaluate("document.querySelector('#careerTimeline').lastElementChild.getBoundingClientRect().bottom") <= vh, "index: 첫 화면에 경력 타임라인 전체")
+    check(page.evaluate("document.querySelector('.portfolio-section-head').getBoundingClientRect().top") < vh, "index: 첫 화면에 포트폴리오 스트립 헤더(스크롤 유도)")
+    check(page.evaluate("document.documentElement.scrollWidth <= window.innerWidth"), "index: 가로 스크롤 없음")
     page.screenshot(path=str(OUT / "index.png"))
     page.context.close()
 
@@ -105,6 +111,7 @@ def test_portfolio(browser, base, manifest, collect):
     norm = lambda u: u.rstrip("/")  # noqa: E731  브라우저가 붙이는 끝 슬래시 차이 무시
     check([norm(h) for h in hrefs] == [norm(p["link"]) for p in manifest], "portfolio: 링크가 manifest 순서/값과 일치")
     check("manifest.json" not in page.inner_text(".page-sub"), "portfolio: 개발자용 안내 문구 제거")
+    check(page.evaluate("document.querySelector('#portfolioGrid .proj-card').getBoundingClientRect().bottom") <= VIEWPORT[1], "portfolio: 첫 화면에 첫 줄 카드 전체")
     page.screenshot(path=str(OUT / "portfolio.png"), full_page=True)
     page.context.close()
 
@@ -118,6 +125,10 @@ def test_chat(browser, base, collect):
     check("AutoStock" in page.inner_text("#chatSuggestions"), "chat: 추천 질문에 실제 프로젝트명")
     check(page.get_attribute("#chatInput", "maxlength") == "2000", "chat: 입력 maxlength 2000")
     check("더미" in page.inner_text("#chatModeNote"), "chat: 더미 모드 안내 표시")
+
+    # 첫 화면(스크롤 전)에서 입력창과 추천 칩까지 사용 가능
+    check(page.evaluate("document.querySelector('#chatInput').getBoundingClientRect().bottom") <= VIEWPORT[1], "chat: 첫 화면에 입력창")
+    check(page.evaluate("document.querySelector('#chatSuggestions').getBoundingClientRect().bottom") <= VIEWPORT[1], "chat: 첫 화면에 추천 칩")
 
     # 직접 입력 -> 더미 응답 + history_jwt 저장
     page.fill("#chatInput", "H2 Map은 어떤 서비스인가요?")

@@ -99,6 +99,20 @@
     },
     {
       "section": "openSource",
+      "period": "2026.10 - 지속 업데이트 (v0.6.19)",
+      "role": "VComHub: Windows 가상 COM 포트 공유 프로그램",
+      "org": "github.com/c0z0c-release/VComHub",
+      "summary": "물리 COM 포트 1개를 여러 가상 COM 포트로 공유해 여러 시리얼 프로그램이 동시에 같은 장치를 쓰게 하는 Windows 트레이 앱",
+      "bullets": [
+        "각 프로그램이 자기 가상 COM(예: COM11, COM12)을 열면 장치 수신 데이터는 모두에게 전달되고, 누가 쓰든 장치로 전달 (여러 물리 포트 동시 매핑 지원)",
+        "보레이트, 라인 제어, 타임아웃, 모뎀 라인을 가상 COM에서 물리 COM으로 그대로 전달하는 투명 중계",
+        "드라이버 패키지를 내장한 단일 exe (설치 프로그램 불필요), 자체 서명 인증서와 SBOM 제공, 영어/한국어 UI",
+        "단독 개발, 첫 공개까지 약 1주 · 이후 지속 업데이트 예정 (Windows 11 x64 검증, ARM64 등은 미검증)"
+      ],
+      "featured": true
+    },
+    {
+      "section": "openSource",
       "period": "진행 중",
       "role": "PyPI: helper-hwp, helper-md-doc, helper-plot-hangul, helper-dev-utils, helper-streamlit-utils",
       "org": "pypi.org/user/c0z0c",
@@ -115,6 +129,7 @@
     "Python",
     "C/C++",
     "Qt/QML",
+    "Windows 드라이버/COM",
     "Embedded Linux",
     "FastAPI",
     "LangGraph",

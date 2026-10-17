@@ -14,6 +14,7 @@ OUT = ROOT / "docs" / "projects" / "images"
 
 # id -> (포인트 색, 큰 글자, 한 줄 설명(ASCII))
 THUMBS: dict[str, tuple[str, str, str]] = {
+    "vcomhub": ("#ff7a00", "VComHub", "1 COM port -> N virtual COM ports"),
     "autostock": ("#00ff41", "AUTOSTOCK", "LangGraph / MCP / KIS Open API"),
     "familydoctor": ("#ff4d8d", "FamilyDoctor", "Gemini + MedGemma 4B / Cloud Run"),
     "h2map": ("#00ffff", "H2 Map", "Realtime map / FastAPI / Kakao Maps"),

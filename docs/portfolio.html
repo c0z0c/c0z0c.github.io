@@ -37,14 +37,14 @@
             width: auto;
         }
 
-        /* FHD 이상: 10개 카드가 5열 2줄로 딱 맞게 */
+        /* FHD 이상: 카드 수가 늘어도 마지막 줄이 한 장만 남지 않도록 넉넉한 4열 기준 */
         @media (min-width: 1500px) {
             .page-wrap {
                 max-width: 1600px;
             }
 
             #portfolioGrid {
-                grid-template-columns: repeat(5, minmax(0, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             }
         }
     </style>

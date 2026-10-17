@@ -402,8 +402,7 @@ body {
 }
 
 .portfolio-section {
-    padding-top: 0.9rem;
-    padding-bottom: 1.1rem;
+    padding-bottom: 2rem;
 }
 
 @media (min-width: 1600px) {
@@ -416,12 +415,12 @@ body {
     }
 
     .career-panel {
-        padding: 4.2rem 4rem 1rem;
-        gap: 1rem;
+        padding: 4.2rem 4rem 1.6rem;
+        gap: 1.2rem;
     }
 
     .timeline {
-        gap: 0.6rem;
+        gap: 0.8rem;
     }
 
     #portfolioStrip .proj-card {
@@ -429,6 +428,6 @@ body {
     }
 
     #portfolioStrip .proj-thumb {
-        height: 100px;
+        height: 150px;
     }
 }

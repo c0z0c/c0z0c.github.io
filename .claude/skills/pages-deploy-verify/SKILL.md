@@ -30,7 +30,7 @@ description: c0z0c.github.io를 beta 브랜치에 push한 뒤 GitHub Actions(pag
 | --- | --- |
 | Actions | `head_sha == HEAD` 인 run의 `conclusion == success` |
 | 라이브 파일 | 비교 대상 전 파일 HTTP 200 + 바이트 일치 |
-| 브라우저 | 4개 페이지 렌더링, 콘솔 에러 0, 채팅 더미 응답 동작 |
+| 브라우저 | 4개 페이지 렌더링, 콘솔 에러 0, 채팅 더미 응답 동작, 기준 뷰포트 1905x920(브라우저 UI 제외)에서 핵심 요소가 첫 화면에 보임 |
 
 ## 4. 주의
 
