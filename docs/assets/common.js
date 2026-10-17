@@ -84,13 +84,13 @@
         });
     });
 
-    // AI c0z0c 링크에 1~5초의 무작위 간격으로 짧은 흔들림을 적용한다.
+    // AI c0z0c 링크에 5~10초의 무작위 간격으로 짧은 흔들림을 적용한다.
     const aiC0z0cLink = document.querySelector('.nav-link[href="AIc0z0c.html"]');
     if (aiC0z0cLink && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         aiC0z0cLink.classList.add('ai-c0z0c-link');
 
         const scheduleAiC0z0cShake = () => {
-            const delay = Math.random() * 4000 + 1000;
+            const delay = Math.random() * 5000 + 5000;
             window.setTimeout(() => {
                 aiC0z0cLink.classList.add('is-shaking');
             }, delay);
