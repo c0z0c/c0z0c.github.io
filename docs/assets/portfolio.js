@@ -8,11 +8,13 @@
 (function () {
     // manifest.json의 프로젝트 한 건을 카드 DOM으로 변환한다.
     function buildCard(p) {
-        const card = document.createElement('a');
+        const card = document.createElement(p.link ? 'a' : 'div');
         card.className = 'proj-card';
-        card.href = p.link;
-        card.target = '_blank';
-        card.rel = 'noopener noreferrer';
+        if (p.link) {
+            card.href = p.link;
+            card.target = '_blank';
+            card.rel = 'noopener noreferrer';
+        }
 
         const thumb = document.createElement('div');
         thumb.className = 'proj-thumb';
