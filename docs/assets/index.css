@@ -491,12 +491,73 @@ body {
     }
 }
 
-/* AWS 교육 배지: 얼굴 아래 오른쪽(가슴 위치). subtitle 뒤에 나타나도록 같이 페이드인 */
-.hero-badge {
+/* 훈장 줄: 얼굴 아래 중앙에 배지를 가로로 나열. subtitle 뒤에 같이 페이드인 */
+.hero-badges {
     position: relative;
-    z-index: 1;
-    align-self: flex-end;
-    margin: 0.6rem 1.2rem 0 0;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.7rem;
+    margin-top: 0.9rem;
     opacity: 0;
     animation: fadeInUp 2s ease 2s forwards;
+}
+
+.badge-medal {
+    display: block;
+    width: 64px;
+    height: 64px;
+}
+
+/* 확대·글로우는 img에만 건다: 배지 요소에 transform이 있으면 툴팁의 위치 기준이 배지로 바뀐다 */
+.badge-medal img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 6px rgba(0, 255, 65, 0.45));
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.badge-medal:hover img,
+.badge-medal:focus-visible img {
+    transform: scale(1.18);
+    filter: drop-shadow(0 0 12px rgba(0, 255, 65, 0.8));
+}
+
+.badge-medal:focus-visible {
+    outline: none;
+}
+
+.badge-tip {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 10px);
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: min(280px, 92vw);
+    text-align: center;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--accent-green);
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid var(--border-dim);
+    border-radius: 4px;
+    padding: 0.35rem 0.7rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 3;
+}
+
+.badge-tip small {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.75rem;
+}
+
+.badge-medal:hover .badge-tip,
+.badge-medal:focus-visible .badge-tip {
+    opacity: 1;
 }

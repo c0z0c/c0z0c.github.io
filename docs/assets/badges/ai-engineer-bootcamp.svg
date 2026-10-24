@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 288" role="img" aria-label="Deep Learning AI Engineer Bootcamp - 1,250 hours">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#14261c"/>
+      <stop offset="1" stop-color="#0a1411"/>
+    </linearGradient>
+  </defs>
+  <polygon points="144,14 262,80 262,208 144,274 26,208 26,80" fill="url(#bg)" stroke="#00ff41" stroke-width="6" stroke-linejoin="round"/>
+  <polygon points="144,32 247,89 247,199 144,256 41,199 41,89" fill="none" stroke="#00ff41" stroke-opacity="0.35" stroke-width="2"/>
+  <g font-family="Consolas, 'Courier New', monospace" text-anchor="middle" fill="#e8fff0">
+    <text x="144" y="146" font-size="92" font-weight="700" fill="#00ff41">AI</text>
+    <text x="144" y="186" font-size="30" font-weight="700" letter-spacing="3">ENGINEER</text>
+  </g>
+  <polygon points="52,222 236,222 236,248 144,262 52,248" fill="#00ff41"/>
+  <text x="144" y="243" font-family="Consolas, 'Courier New', monospace" font-size="20" font-weight="700" letter-spacing="3" text-anchor="middle" fill="#06120a">BOOTCAMP</text>
+</svg>

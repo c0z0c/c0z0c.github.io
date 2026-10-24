@@ -1,0 +1,16 @@
+{
+  "badges": [
+    {
+      "name": "Deep Learning AI Engineer Bootcamp (NLP·Vision, 1,250h)",
+      "issuer": "Codeit 평생교육원",
+      "image": "assets/badges/ai-engineer-bootcamp.svg",
+      "url": "career.html"
+    },
+    {
+      "name": "AWS Academy Graduate - Cloud Foundations",
+      "issuer": "Amazon Web Services Training and Certification",
+      "image": "assets/badges/aws-academy-cloud-foundations.png",
+      "url": "https://www.credly.com/badges/cce19d86-dd49-40a7-a9b1-63b306daee34/public_url"
+    }
+  ]
+}
