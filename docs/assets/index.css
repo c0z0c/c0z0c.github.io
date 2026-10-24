@@ -490,3 +490,13 @@ body {
         height: 110px;
     }
 }
+
+/* AWS 교육 배지: 얼굴 아래 오른쪽(가슴 위치). subtitle 뒤에 나타나도록 같이 페이드인 */
+.hero-badge {
+    position: relative;
+    z-index: 1;
+    align-self: flex-end;
+    margin: 0.6rem 1.2rem 0 0;
+    opacity: 0;
+    animation: fadeInUp 2s ease 2s forwards;
+}
