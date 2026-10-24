@@ -94,6 +94,13 @@
             padding: 0.25rem 0.75rem;
         }
 
+        /* 인증 배지 목록: 배지가 늘어나면 가로로 나열 */
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
         @media (min-width: 1500px) {
             .page-wrap {
                 max-width: 1040px;
@@ -139,11 +146,20 @@
         <p class="page-sub" id="careerLead">불러오는 중...</p>
 
         <div id="careerFull"></div>
+
+        <!-- 교육 배지: Credly 공식 임베드 (iframe은 embed.js가 생성한다) -->
+        <section>
+            <h2>&gt; 인증 배지</h2>
+            <div class="badge-list">
+                <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="cce19d86-dd49-40a7-a9b1-63b306daee34" data-share-badge-host="https://www.credly.com"></div>
+            </div>
+        </section>
     </div>
 
     <!-- 공통 UI를 초기화한 뒤 career.js가 약력 데이터를 표시한다. -->
     <script src="assets/common.js"></script>
     <script src="assets/career.js"></script>
+    <script type="text/javascript" async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
 </body>
 
 </html>
