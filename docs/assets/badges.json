@@ -7,6 +7,12 @@
       "url": "career.html"
     },
     {
+      "name": "서울사이버대학교 인공지능학과 (재학 중)",
+      "issuer": "서울사이버대학교",
+      "image": "assets/badges/seoul-cyber-univ-ai.svg",
+      "url": "career.html"
+    },
+    {
       "name": "AWS Academy Graduate - Cloud Foundations",
       "issuer": "Amazon Web Services Training and Certification",
       "image": "assets/badges/aws-academy-cloud-foundations.png",
