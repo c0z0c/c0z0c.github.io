@@ -17,6 +17,12 @@
   ],
   "projects": [
     {
+      "name": "MCP Microsoft Office - Office 문서 편집 MCP 서버 (개인, 단독, 2026.11)",
+      "summary": "Windows Microsoft Office의 Word, PowerPoint, Visio, Excel 등 문서를 AI가 편집할 수 있게 하는 MCP 서버 모음(github.com/c0z0c-release/mcp_microsoft_office). excel, word, powerpoint, visio, outlook, outlook_todo, onenote 서버 7종을 각각 단일 exe로 제공하고, 설치기 하나에 모두 내장했다. 설치기는 새 버전을 확인해 SHA-256 검증 후 업그레이드하며 Claude Desktop 등록을 지원한다. C#(.NET Framework 4.8)로 단독 개발했다. 라이선스는 저장소에 명시하지 않았다.",
+      "duration_weeks": 0,
+      "stack": ["C#", ".NET Framework 4.8", "MCP", "Microsoft Office"]
+    },
+    {
       "name": "VComHub - Windows 가상 COM 포트 공유 프로그램 (무료 배포 프리웨어, 오픈소스 아님, 단독, 2026.10 공개, 지속 업데이트 중)",
       "summary": "물리 COM 포트 1개를 여러 가상 COM 포트로 공유하는 Windows 트레이 앱(github.com/c0z0c-release/VComHub, 최신 v0.6.19). 단독 개발로 첫 공개까지 약 1주가 걸렸고 이후에도 계속 업데이트하고 있다. 각 시리얼 프로그램이 자기 가상 COM을 열면 장치 수신 데이터가 모두에게 전달되고 어느 쪽에서 쓰든 장치로 전달된다. 보레이트·라인 제어·타임아웃·모뎀 라인을 물리 COM에 그대로 적용하는 투명 중계이며 여러 물리 포트를 동시에 매핑할 수 있다. 드라이버 패키지를 내장한 단일 exe, 트레이 RX/TX 표시, 설정 창, 디버그 CLI, 영어/한국어를 지원한다. 드라이버는 자체 서명 인증서로 서명되고 SBOM을 함께 배포한다. Windows 11 x64에서만 검증했고 ARM64나 Secure Boot 등 엄격한 정책 환경은 미검증이다. 누구나 무료로 사용할 수 있는 프리웨어이며 오픈소스는 아니다.",
       "duration_weeks": 1,

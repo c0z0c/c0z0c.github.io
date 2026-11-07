@@ -99,6 +99,20 @@
     },
     {
       "section": "freeware",
+      "period": "2026.11 -",
+      "role": "MCP Microsoft Office",
+      "org": "Office 문서 편집 MCP 서버",
+      "summary": "Windows Microsoft Office의 Word, PowerPoint, Visio, Excel 등 문서를 AI가 편집할 수 있게 하는 MCP 서버 모음과 설치기",
+      "bullets": [
+        "서버 7종: excel, word, powerpoint, visio, outlook, outlook_todo, onenote (각각 단일 exe)",
+        "설치기(mcp_microsoft_office.exe) 하나로 서버 7개 설치, 새 버전 확인 후 SHA-256 검증을 거쳐 업그레이드, Claude Desktop 등록 지원",
+        "C# (.NET Framework 4.8), 단독 개발",
+        "github.com/c0z0c-release/mcp_microsoft_office"
+      ],
+      "featured": true
+    },
+    {
+      "section": "freeware",
       "period": "2026.10 - 지속 업데이트 (v0.6.19)",
       "role": "VComHub",
       "org": "Windows 가상 COM 공유",

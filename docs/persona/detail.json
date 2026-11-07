@@ -79,6 +79,38 @@
       "source_refs": []
     },
     {
+      "id": "project-mcp-microsoft-office",
+      "kind": "project",
+      "title": "MCP Microsoft Office 오피스 문서 편집 MCP 서버",
+      "visibility": "public",
+      "period": "2026.11-현재",
+      "role": "단독 개발",
+      "summary": "Windows Microsoft Office의 Word, PowerPoint, Visio, Excel 등 문서를 AI가 편집할 수 있게 하는 개인 프로젝트다.",
+      "facts": [
+        "서버 7종(excel, word, powerpoint, visio, outlook, outlook_todo, onenote)을 각각 단일 실행 파일로 제공한다.",
+        "설치기 하나에 서버 7개를 내장했다.",
+        "설치기가 새 버전을 확인하고 SHA-256 검증 후 업그레이드한다.",
+        "Claude Desktop 등록을 지원한다."
+      ],
+      "outcomes": [
+        "GitHub 릴리스로 공개했다."
+      ],
+      "limitations": [
+        "라이선스는 저장소에 명시하지 않았다.",
+        "클래식 Office 데스크톱 환경 기준이다."
+      ],
+      "technologies": [
+        "C#",
+        ".NET Framework 4.8",
+        "MCP",
+        "Microsoft Office"
+      ],
+      "related_project_ids": ["project-vcomhub"],
+      "source_refs": [
+        "https://github.com/c0z0c-release/mcp_microsoft_office"
+      ]
+    },
+    {
       "id": "project-vcomhub",
       "kind": "project",
       "title": "VComHub 가상 COM 포트 공유 프로그램",

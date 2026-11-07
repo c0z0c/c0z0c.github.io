@@ -1,5 +1,16 @@
 [
   {
+    "id": "mcp-microsoft-office",
+    "title": "[개인 프로젝트] MCP Microsoft Office - 오피스 문서 편집 MCP 서버",
+    "description": "Windows Microsoft Office의 Word, PowerPoint, Visio, Excel 등 문서를 AI가 편집할 수 있게 하는 MCP 서버 7종(excel, word, powerpoint, visio, outlook, outlook_todo, onenote)과 설치기 (C#, .NET Framework 4.8, 단독 개발)",
+    "tags": ["MCP", "Microsoft Office", "C#", "Windows"],
+    "thumbGradient": "linear-gradient(135deg, #2b88d8, #16213e)",
+    "thumbEmoji": "📎",
+    "thumbImage": "projects/images/mcp-microsoft-office.svg",
+    "link": "https://github.com/c0z0c-release/mcp_microsoft_office",
+    "media": { "type": "none" }
+  },
+  {
     "id": "vcomhub",
     "title": "[프리웨어] VComHub - 가상 COM 포트 공유",
     "description": "Windows 물리 COM 포트 1개를 여러 가상 COM 포트로 공유하는 트레이 앱. 드라이버를 내장한 단일 exe, 여러 물리 포트 동시 매핑, 트레이 RX/TX 표시 (v0.6.19, 단독 개발·지속 업데이트)",
